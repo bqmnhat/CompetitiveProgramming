@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1629735472 source:d:\mylab\btth\codeforces\watermelon\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

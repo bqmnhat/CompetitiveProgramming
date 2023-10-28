@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1618555607 source:d:\mylab\btth\col_pen\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

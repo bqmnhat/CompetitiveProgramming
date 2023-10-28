@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1615829564 source:d:\mylab\btth\chinuoc\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

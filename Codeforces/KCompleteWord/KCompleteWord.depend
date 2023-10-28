@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1652502010 source:c:\nhatbui\backup_28.12.2021\mylab\btth\codeforces\kcompleteword\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1631617972 source:d:\mylab\btth\chamcode\kiemtrasnt\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

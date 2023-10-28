@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1631617535 source:d:\mylab\btth\chamcode\vetamgiac\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

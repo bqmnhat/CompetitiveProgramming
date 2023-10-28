@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1640272259 source:d:\mylab\btth\codeforces\naughtyornice\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

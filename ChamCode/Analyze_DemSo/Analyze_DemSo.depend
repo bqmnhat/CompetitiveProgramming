@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1631872529 source:d:\mylab\btth\chamcode\analyze_demso\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

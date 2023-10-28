@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1670014915 source:c:\nhatbui\backup_28.12.2021\mylab\btth\codeforces\almostallmultiples\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1632107394 source:d:\mylab\btth\chamcodet3\maxid\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1630251936 source:d:\mylab\btth\cses\labyrinth\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

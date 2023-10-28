@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1630300044 source:d:\mylab\btth\cses\subarraysum2\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

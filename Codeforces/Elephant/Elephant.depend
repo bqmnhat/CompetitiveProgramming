@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1639449823 source:d:\mylab\btth\codeforces\elephant\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1633000904 source:d:\mylab\btth\codeforces\ticks\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

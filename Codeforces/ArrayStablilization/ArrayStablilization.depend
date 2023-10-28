@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1639587404 source:d:\mylab\btth\codeforces\arraystablilization\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1638594748 source:d:\mylab\btth\codeforces\twobuttons\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

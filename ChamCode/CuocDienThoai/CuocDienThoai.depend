@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1631610237 source:d:\mylab\btth\chamcode\cuocdienthoai\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

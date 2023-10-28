@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1596169685 source:d:\bai tap star\c++\large_number_multiplication\main.cpp
+	<iostream>
+	<string>
+	<sstream>
+

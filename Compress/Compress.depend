@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1609168534 source:d:\bai tap star\compress\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1615959088 source:d:\mylab\btth\chevuon\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

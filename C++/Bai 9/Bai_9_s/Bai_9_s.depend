@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1596560022 source:d:\bai tap star\c++\bai 9\bai_9_s\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<sstream>
+

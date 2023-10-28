@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1639158964 source:d:\mylab\btth\codeforces\tabledecor\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

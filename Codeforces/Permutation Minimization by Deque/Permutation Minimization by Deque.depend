@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1633013799 source:d:\mylab\btth\codeforces\permutation minimization by deque\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

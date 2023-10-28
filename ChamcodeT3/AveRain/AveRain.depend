@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1632109132 source:d:\mylab\btth\chamcodet3\averain\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1633012725 source:d:\mylab\btth\codeforces\productive meeting\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

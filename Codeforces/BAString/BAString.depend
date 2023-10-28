@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1639849338 source:d:\mylab\btth\codeforces\bastring\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

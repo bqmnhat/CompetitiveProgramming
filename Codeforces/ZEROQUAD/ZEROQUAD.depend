@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1639501700 source:d:\mylab\btth\codeforces\zeroquad\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

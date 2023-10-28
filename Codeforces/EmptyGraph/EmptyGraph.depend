@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1679076186 source:c:\nhatbui\backup_28.12.2021\mylab\btth\codeforces\emptygraph\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+	<ext/pb_ds/assoc_container.hpp>
+	<ext/pb_ds/tree_policy.hpp>
+

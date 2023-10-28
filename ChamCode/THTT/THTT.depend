@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1631502722 source:d:\mylab\btth\chamcode\thtt\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

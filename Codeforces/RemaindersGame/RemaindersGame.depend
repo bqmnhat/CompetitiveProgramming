@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1658552701 source:c:\nhatbui\backup_28.12.2021\mylab\btth\codeforces\remaindersgame\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

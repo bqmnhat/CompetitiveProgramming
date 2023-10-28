@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1638946524 source:d:\mylab\btth\codeforces\makeeven\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

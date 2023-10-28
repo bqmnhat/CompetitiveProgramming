@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1639134067 source:d:\mylab\btth\codeforces\kefaandcompany\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

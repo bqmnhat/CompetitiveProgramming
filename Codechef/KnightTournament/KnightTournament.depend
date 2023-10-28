@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1638533925 source:d:\mylab\btth\codechef\knighttournament\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

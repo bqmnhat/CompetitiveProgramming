@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1638593566 source:d:\mylab\btth\codeforces\givenlengthandsumofdigits\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

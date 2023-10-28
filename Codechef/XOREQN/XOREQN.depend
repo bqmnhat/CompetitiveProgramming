@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1636609655 source:d:\mylab\btth\codechef\xoreqn\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

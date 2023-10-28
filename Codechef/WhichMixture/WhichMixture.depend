@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1633624919 source:d:\mylab\btth\codechef\whichmixture\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

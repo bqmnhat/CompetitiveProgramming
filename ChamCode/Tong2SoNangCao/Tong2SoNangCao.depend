@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1631503186 source:d:\mylab\btth\chamcode\tong2sonangcao\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

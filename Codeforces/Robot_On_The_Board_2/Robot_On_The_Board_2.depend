@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1635952183 source:d:\mylab\btth\codeforces\robot_on_the_board_2\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

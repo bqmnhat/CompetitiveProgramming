@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1639840066 source:d:\mylab\btth\codeforces\cheaptravel\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+
