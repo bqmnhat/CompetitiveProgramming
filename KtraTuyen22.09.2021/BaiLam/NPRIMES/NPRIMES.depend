@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1632297028 source:d:\mylab\btth\ktratuyen22.09.2021\bailam\nprimes\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

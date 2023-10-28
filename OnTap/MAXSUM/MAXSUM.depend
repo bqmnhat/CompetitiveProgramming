@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1622961988 source:d:\mylab\btth\ontap\maxsum\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

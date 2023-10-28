@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1624072360 source:d:\mylab\btth\ontap\xdtv1\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1624781528 source:d:\mylab\btth\ontap\fraction\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

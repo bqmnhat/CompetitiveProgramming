@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1622442649 source:d:\mylab\btth\ontap\pizza\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

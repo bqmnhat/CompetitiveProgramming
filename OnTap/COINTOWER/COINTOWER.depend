@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1623578903 source:d:\mylab\btth\ontap\cointower\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

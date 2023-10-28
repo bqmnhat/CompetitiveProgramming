@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1605804300 source:d:\bai tap star\minhnhat\oddnum\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

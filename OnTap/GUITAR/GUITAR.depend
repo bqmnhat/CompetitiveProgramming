@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1624179049 source:d:\mylab\btth\ontap\guitar\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

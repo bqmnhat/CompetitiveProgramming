@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1623000269 source:d:\mylab\btth\ontap\expense\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

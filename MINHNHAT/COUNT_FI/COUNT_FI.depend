@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1605802786 source:d:\bai tap star\minhnhat\count_fi\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

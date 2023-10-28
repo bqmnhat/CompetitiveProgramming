@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1633449167 source:d:\mylab\btth\khobau\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

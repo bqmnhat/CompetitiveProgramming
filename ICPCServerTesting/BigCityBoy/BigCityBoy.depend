@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1638605501 source:d:\mylab\btth\icpcservertesting\bigcityboy\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

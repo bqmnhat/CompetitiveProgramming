@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1616087653 source:d:\mylab\btth\nkbus\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

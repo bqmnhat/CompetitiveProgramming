@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1615619683 source:d:\mylab\btth\rutgon\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

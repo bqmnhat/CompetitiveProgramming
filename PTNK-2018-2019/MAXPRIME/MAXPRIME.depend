@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1623344062 source:d:\mylab\btth\ptnk-2018-2019\maxprime\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

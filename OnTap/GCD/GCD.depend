@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1623571990 source:d:\mylab\btth\ontap\gcd\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

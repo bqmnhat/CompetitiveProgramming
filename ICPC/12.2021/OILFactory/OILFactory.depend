@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1638678871 source:d:\mylab\btth\icpc\12.2021\oilfactory\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

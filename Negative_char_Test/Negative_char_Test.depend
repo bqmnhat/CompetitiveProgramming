@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1630748109 source:d:\mylab\btth\negative_char_test\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

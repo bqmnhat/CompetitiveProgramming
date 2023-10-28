@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1628258180 source:d:\mylab\btth\ontap\checkrect\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

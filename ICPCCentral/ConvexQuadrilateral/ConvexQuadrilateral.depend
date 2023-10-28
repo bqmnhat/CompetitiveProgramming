@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1639305152 source:d:\mylab\btth\icpccentral\convexquadrilateral\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

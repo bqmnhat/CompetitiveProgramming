@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1630160475 source:d:\mylab\btth\ontap\equation\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

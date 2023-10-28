@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1628854502 source:d:\mylab\btth\ontap\molecular\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+
