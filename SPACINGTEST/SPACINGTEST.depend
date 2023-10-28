@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1636213450 source:d:\mylab\btth\spacingtest\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

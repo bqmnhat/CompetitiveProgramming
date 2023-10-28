@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1663343293 source:c:\nhatbui\backup_28.12.2021\mylab\btth\vjudge\goldbachconjecture\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

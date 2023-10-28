@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1640158204 source:d:\mylab\btth\vjudge\lca\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

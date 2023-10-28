@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1656769894 source:c:\nhatbui\backup_28.12.2021\mylab\btth\vnoi\bishop\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1620549257 source:d:\mylab\btth\xanhdo\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

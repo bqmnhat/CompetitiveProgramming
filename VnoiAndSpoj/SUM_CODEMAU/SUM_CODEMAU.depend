@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1680527121 source:c:\nhatbui\backup_28.12.2021\mylab\btth\vnoiandspoj\sum_codemau\main.cpp
+	<algorithm>
+	<bitset>
+	<cmath>
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<ctime>
+	<deque>
+	<fstream>
+	<iostream>
+	<map>
+	<queue>
+	<set>
+	<sstream>
+	<stack>
+	<string>
+	<vector>
+

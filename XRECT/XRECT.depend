@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1615483016 source:d:\mylab\btth\xrect\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

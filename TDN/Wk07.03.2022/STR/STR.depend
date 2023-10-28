@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1646622610 source:c:\nhatbui\backup_28.12.2021\mylab\btth\tdn\wk07.03.2022\str\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+	<string>
+

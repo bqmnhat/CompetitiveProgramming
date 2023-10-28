@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1621525289 source:d:\mylab\btth\snt_nhanh\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

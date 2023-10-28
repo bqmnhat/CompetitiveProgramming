@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1637729435 source:d:\mylab\btth\tinhoc24.11\sdb\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

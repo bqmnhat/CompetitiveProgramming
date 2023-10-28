@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1694838526 source:c:\nhatbui\backup_28.12.2021\mylab\btth\vnoiandspoj\qbagents\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

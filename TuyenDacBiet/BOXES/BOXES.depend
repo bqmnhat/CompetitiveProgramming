@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1653192563 source:c:\nhatbui\backup_28.12.2021\mylab\btth\tuyendacbiet\boxes\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1633755172 source:d:\mylab\btth\travel\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

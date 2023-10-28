@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1665806589 source:c:\nhatbui\backup_28.12.2021\mylab\btth\vnoiandspoj\doanso\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

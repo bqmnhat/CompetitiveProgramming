@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1614415243 source:d:\mylab\btth\sum_s\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

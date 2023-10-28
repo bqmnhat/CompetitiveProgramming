@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1628501545 source:d:\mylab\btth\thithu\hardproblem\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

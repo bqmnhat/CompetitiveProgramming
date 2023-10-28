@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1655822914 source:c:\nhatbui\backup_28.12.2021\mylab\btth\vnoi\incseq\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

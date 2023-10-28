@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1628502102 source:d:\mylab\btth\thithu\hardp\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+
