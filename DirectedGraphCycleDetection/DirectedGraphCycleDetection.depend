@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1637511175 source:d:\mylab\btth\directedgraphcycledetection\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

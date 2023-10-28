@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1679451778 source:d:\17\distance\distance.inp.c
+
+1679451792 source:d:\17\distance\distance.out.c
+
+1679456003 source:d:\17\distance\main.cpp
+	<bits/stdc++.h>
+

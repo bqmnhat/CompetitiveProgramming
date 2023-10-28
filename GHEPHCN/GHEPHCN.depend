@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1620535478 source:d:\mylab\btth\ghephcn\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

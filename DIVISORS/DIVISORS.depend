@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1613393075 source:d:\mylab\btth\divisors\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

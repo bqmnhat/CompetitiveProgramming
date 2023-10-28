@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1632649984 source:d:\mylab\btth\hackerrank\subsets_with_a_unique_sum\main.cpp
+	<cmath>
+	<cstdio>
+	<vector>
+	<iostream>
+	<algorithm>
+

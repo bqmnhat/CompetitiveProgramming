@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1621583114 source:d:\mylab\btth\de_lam_thu\phannhom\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

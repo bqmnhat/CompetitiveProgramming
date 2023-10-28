@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1629606939 source:d:\mylab\btth\googlekickstart\2021\birthdaycake\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

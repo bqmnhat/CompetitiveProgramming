@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1638753756 source:d:\mylab\btth\findingpairs\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

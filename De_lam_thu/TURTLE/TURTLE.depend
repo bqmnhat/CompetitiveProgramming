@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1621584434 source:d:\mylab\btth\de_lam_thu\turtle\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

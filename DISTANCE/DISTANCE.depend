@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1618562321 source:d:\mylab\btth\distance\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+
