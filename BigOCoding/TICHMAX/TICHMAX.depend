@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1638024845 source:d:\mylab\btth\bigocoding\tichmax\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

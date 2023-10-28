@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1639663272 source:d:\mylab\btth\bigocoding\balancedteam\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

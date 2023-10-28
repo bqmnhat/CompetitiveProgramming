@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1639647531 source:d:\mylab\btth\bigocoding\robot\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

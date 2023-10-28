@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1637738436 source:d:\mylab\btth\bttuyen\electioninmu\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

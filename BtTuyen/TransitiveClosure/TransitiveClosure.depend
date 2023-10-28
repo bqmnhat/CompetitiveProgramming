@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1633752399 source:d:\mylab\btth\bttuyen\transitiveclosure\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

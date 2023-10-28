@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1618557352 source:d:\mylab\btth\auction\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

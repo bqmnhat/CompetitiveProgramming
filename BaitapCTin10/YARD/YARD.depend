@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1635566356 source:d:\mylab\btth\baitapctin10\yard\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

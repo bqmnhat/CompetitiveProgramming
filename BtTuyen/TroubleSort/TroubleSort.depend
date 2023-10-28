@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1638192218 source:d:\mylab\btth\bttuyen\troublesort\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1637333690 source:d:\mylab\btth\bttuyen\nov17practice\robotontheboard1\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

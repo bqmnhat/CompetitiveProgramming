@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1636653519 source:d:\mylab\btth\bttuyen\roboticpaths\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

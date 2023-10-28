@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1639047461 source:d:\mylab\btth\bigocoding\bullseye\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

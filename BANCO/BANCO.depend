@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1620975657 source:d:\mylab\btth\banco\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

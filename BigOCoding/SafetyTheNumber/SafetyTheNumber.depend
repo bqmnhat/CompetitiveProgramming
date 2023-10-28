@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1638621469 source:d:\mylab\btth\bigocoding\safetythenumber\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

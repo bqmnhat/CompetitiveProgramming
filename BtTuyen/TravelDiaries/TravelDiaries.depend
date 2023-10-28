@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1636481578 source:d:\mylab\btth\bttuyen\traveldiaries\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

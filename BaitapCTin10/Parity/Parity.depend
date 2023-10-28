@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1633335411 source:d:\mylab\btth\baitapctin10\parity\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

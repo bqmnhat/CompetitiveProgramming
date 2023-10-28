@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1637489437 source:d:\mylab\btth\bttuyen\emulationofnumbers\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

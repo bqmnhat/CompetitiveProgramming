@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1637855499 source:d:\mylab\btth\bigocoding\cookingthebooks\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

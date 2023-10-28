@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1613810238 source:d:\mylab\btth\abinlis\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

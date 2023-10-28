@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1651981230 source:c:\nhatbui\backup_28.12.2021\mylab\btth\bigocoding\longestmatch\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

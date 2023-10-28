@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1646918830 source:c:\nhatbui\backup_28.12.2021\mylab\btth\bigocoding\courseschedule\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1638621952 source:d:\mylab\btth\bigocoding\distance\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

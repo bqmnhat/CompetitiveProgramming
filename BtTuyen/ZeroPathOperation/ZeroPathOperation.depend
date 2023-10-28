@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1635928512 source:d:\mylab\btth\bttuyen\zeropathoperation\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+
