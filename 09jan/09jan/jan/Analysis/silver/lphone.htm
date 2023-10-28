@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0046)http://ace.delos.com/TESTDATA/JAN09.lphone.htm -->
+<HTML><HEAD><TITLE>USACO JAN09 lphone Analysis</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<STYLE type=text/css>BODY {
+	FONT-FAMILY: Verdana,Tahoma,sans-serif,Arial,Lucida
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1615" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<CENTER><IMG height=118 src="lphone.files/cow1.jpg" width=742></CENTER>
+<H2>USACO JAN09 Problem 'lphone' Analysis</H2>
+<H4>by Fatih Gelgi</H4>
+<P>The problem can be solved by using floodfill algorithm with a simple twist. 
+The only difference is to move more than one point in contrast to regular 
+floodfill. The laser beam moves in a direction until a blocking object appears; 
+so move counter in floodfill algorithm remains same moving in four directions 
+from a point.</P>
+<P>The solution requires O(N^2) memory since it keeps the grid and a grid for 
+floodfill. It requires O(N^3) time for floodfill algorithm.</P><PRE>/* Floodfill: O(N^3) */
+#include &lt;fstream&gt;
+#include &lt;queue&gt;
+
+#define MAXN 100
+
+using namespace std;
+
+struct Point
+{
+	int x,y;
+} p[2];
+
+const int d[4][2]={{-1,0},{1,0},{0,-1},{0,1}};
+
+int n,m,mark[MAXN][MAXN],cnt;
+char mat[MAXN][MAXN];
+
+// read input
+void readFile(char *inpFile)
+{
+	ifstream f(inpFile);
+	f &gt;&gt; m &gt;&gt; n;
+	int k=0;
+	for (int i=0; i&lt;n; i++)
+		for (int j=0; j&lt;m; j++)	
+		{
+			f &gt;&gt; mat[i][j];
+			if (mat[i][j]=='C') p[k].y=i,p[k++].x=j;
+		}
+	f.close();
+}
+
+// write output
+void writeFile(char *outFile)
+{
+	ofstream f(outFile);
+	f &lt;&lt; cnt-1 &lt;&lt; "\n";
+	f.close();
+}
+
+// Floodfill
+void floodfill()
+{
+	mark[p[0].y][p[0].x]=1;		// start from the location of first cow
+	queue&lt;Point&gt; q;
+	q.push(p[0]);
+
+	for ( ; ; )
+	{
+		Point pt=q.front();
+		q.pop();
+		cnt=mark[pt.y][pt.x];
+		
+		for (int k=0; k&lt;4; k++)
+			// laser fill in one direction
+			// 	enqueue all the points until a rock appears
+			for (int i=pt.y+d[k][0],j=pt.x+d[k][1]; i&gt;=0 &amp;&amp; j&gt;=0 &amp;&amp; i&lt;n &amp;&amp;
+j&lt;m; i+=d[k][0],j+=d[k][1])
+			{
+				if (mat[i][j]=='*') break;
+				if (!mark[i][j])
+				{ 
+					mark[i][j]=cnt+1;		// floodfill marker matrix
+									// 	records the minimum number of mirrors
+									//	upto the location i,j
+					Point pn;
+					pn.y=i, pn.x=j;
+					q.push(pn);
+				}
+				if (i==p[1].y &amp;&amp; j==p[1].x) return;	// finish if it is second location
+			}
+	}
+}
+
+int main()
+{
+	readFile("lphone.in");
+	floodfill();
+	writeFile("lphone.out");
+}
+</PRE></BODY></HTML>

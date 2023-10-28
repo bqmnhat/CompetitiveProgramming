@@ -1,0 +1,463 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0061)http://ace.delos.com/ioiupload?d=silver&a=YYmxJSFCWG9&lang=en -->
+<HTML><HEAD><TITLE>USACO Problems</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META http-equiv=Pragma content=no-cache>
+<SCRIPT language=javascript>
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</SCRIPT>
+
+<META content="MSHTML 6.00.2800.1615" name=GENERATOR></HEAD>
+<BODY background=silver.files/bg9.jpg onload=""><FONT 
+face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><IMG src="silver.files/cowhead2.gif"> </TD>
+    <TD vAlign=top>
+      <TABLE cellSpacing=0 cellPadding=0>
+        <TBODY>
+        <TR>
+          <TD>Contest: JAN09</TD></TR>
+        <TR>
+          <TD></TD></TR>
+        <TR>
+          <TD></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><FONT 
+color=red><B></B></FONT><BR><FONT size=6 <b>ANALYSIS MODE</B></FONT><BR>Submit 
+solutions for your own enjoyment. </FONT><PRE>**********************************************************************
+                           SILVER PROBLEMS
+**********************************************************************
+                  Three problems numbered 6 through 8
+**********************************************************************
+
+Problem 6: Best Spot [Rob Kolstad, 2009]
+
+Bessie, always wishing to optimize her life, has realized that she
+really enjoys visiting F (1 &lt;= F &lt;= P) favorite pastures F_i of the
+P (1 &lt;= P &lt;= 500; 1 &lt;= F_i &lt;= P) total pastures (conveniently
+numbered 1..P) that compose Farmer John's holdings.
+
+Bessie knows that she can navigate the C (1 &lt;= C &lt;= 8,000) bidirectional
+cowpaths (conveniently numbered 1..C) that connect various pastures
+to travel to any pasture on the entire farm. Associated with each
+path P_i is a time T_i (1 &lt;= T_i &lt;= 892) to traverse that path (in
+either direction) and two path endpoints a_i and b_i (1 &lt;= a_i &lt;=
+P; 1 &lt;= b_i &lt;= P).
+
+Bessie wants to find the number of the best pasture to sleep in so
+that when she awakes, the average time to travel to any of her F
+favorite pastures is minimized.
+
+By way of example, consider a farm laid out as the map below shows,
+where *'d pasture numbers are favorites. The bracketed numbers are
+times to traverse the cowpaths.
+
+            1*--[4]--2--[2]--3
+                     |       |
+                    [3]     [4]
+                     |       |
+                     4--[3]--5--[1]---6---[6]---7--[7]--8*
+                     |       |        |         |
+                    [3]     [2]      [1]       [3]
+                     |       |        |         |
+                    13*      9--[3]--10*--[1]--11*--[3]--12*
+
+The following table shows distances for potential 'best place' of
+pastures 4, 5, 6, 7, 9, 10, 11, and 12:
+
+                       * * * * * * Favorites * * * * * *
+ Potential      Pasture Pasture Pasture Pasture Pasture Pasture     Average
+Best Pasture       1       8      10      11      12      13        Distance
+------------      --      --      --      --      --      --      -----------
+    4              7      16       5       6       9       3      46/6 = 7.67
+    5             10      13       2       3       6       6      40/6 = 6.67
+    6             11      12       1       2       5       7      38/6 = 6.33
+    7             16       7       4       3       6      12      48/6 = 8.00
+    9             12      14       3       4       7       8      48/6 = 8.00
+   10             12      11       0       1       4       8      36/6 = 6.00 ** BEST
+   11             13      10       1       0       3       9      36/6 = 6.00
+   12             16      13       4       3       0      12      48/6 = 8.00
+
+Thus, presuming these choices were the best ones (a program would
+have to check all of them somehow), the best place to sleep is
+pasture 10.
+
+PROBLEM NAME: bestspot
+
+INPUT FORMAT:
+
+* Line 1: Three space-separated integers: P, F, and C
+
+* Lines 2..F+1: Line i+2 contains a single integer: F_i
+
+* Lines F+2..C+F+1: Line i+F+1 describes cowpath i with three
+        space-separated integers: a_i, b_i, and T_i
+
+SAMPLE INPUT (file bestspot.in):
+
+13 6 15
+11
+13
+10
+12
+8
+1
+2 4 3
+7 11 3
+10 11 1
+4 13 3
+9 10 3
+2 3 2
+3 5 4
+5 9 2
+6 7 6
+5 6 1
+1 2 4
+4 5 3
+11 12 3
+6 10 1
+7 8 7
+
+INPUT DETAILS:
+
+As the problem statement
+
+OUTPUT FORMAT:
+
+* Line 1: A single line with a single integer that is the best pasture
+        in which to sleep. If more than one pasture is best, choose
+        the smallest one.
+
+SAMPLE OUTPUT (file bestspot.out):
+
+10
+
+OUTPUT DETAILS:
+
+As the problem statement.
+
+**********************************************************************
+
+Problem 7: Total Flow [Rob Kolstad, 2008]
+
+Farmer John always wants his cows to have enough water and thus has
+made a map of the N (1 &lt;= N &lt;= 700) water pipes on the farm that
+connect the well to the barn. He was surprised to find a wild mess
+of different size pipes connected in an apparently haphazard way.
+He wants to calculate the flow through the pipes.
+
+Two pipes connected in a row allow water flow that is the minimum
+of the values of the two pipe's flow values. The example of a pipe
+with flow capacity 5 connecting to a pipe of flow capacity 3 can
+be reduced logically to a single pipe of flow capacity 3:
+
+  +---5---+---3---+    -&gt;    +---3---+
+
+Similarly, pipes in parallel let through water that is the sum of
+their flow capacities:
+
+    +---5---+
+ ---+       +---    -&gt;    +---8---+
+    +---3---+
+
+Finally, a pipe that connects to nothing else can be removed; it
+contributes no flow to the final overall capacity:
+
+    +---5---+
+ ---+               -&gt;    +---3---+
+    +---3---+--
+
+All the pipes in the many mazes of plumbing can be reduced using
+these ideas into a single total flow capacity.
+
+Given a map of the pipes, determine the flow capacity between the
+well (A) and the barn (Z).
+
+Consider this example where node names are labeled with letters:
+
+                 +-----------6-----------+
+        A+---3---+B                      +Z
+                 +---3---+---5---+---4---+
+                         C       D
+
+Pipe BC and CD can be combined:
+
+                 +-----------6-----------+
+        A+---3---+B                      +Z
+                 +-----3-----+-----4-----+
+                             D
+
+Then BD and DZ can be combined:
+
+                 +-----------6-----------+
+        A+---3---+B                      +Z
+                 +-----------3-----------+
+
+Then two legs of BZ can be combined:
+
+                 B
+        A+---3---+---9---+Z
+
+Then AB and BZ can be combined to yield a net capacity of 3:
+
+        A+---3---+Z
+
+Write a program to read in a set of pipes described as two endpoints
+and then calculate the net flow capacity from 'A' to 'Z'. All
+networks in the test data can be reduced using the rules here.
+
+Pipe i connects two different nodes a_i and b_i (a_i in range
+'A-Za-z'; b_i in range 'A-Za-z') and has flow F_i (1 &lt;= F_i &lt;=
+1,000). Note that lower- and upper-case node names are intended
+to be treated as different.
+
+The system will provide extra test case feedback for your first 50
+submissions.
+
+PROBLEM NAME: flow
+
+INPUT FORMAT:
+
+* Line 1: A single integer: N
+
+* Lines 2..N + 1: Line i+1 describes pipe i with two letters and an
+        integer, all space-separated: a_i, b_i, and F_i
+
+SAMPLE INPUT (file flow.in):
+
+5
+A B 3
+B C 3
+C D 5
+D Z 4
+B Z 6
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer that the maximum flow from the well ('A')
+        to the barn ('Z')
+
+SAMPLE OUTPUT (file flow.out):
+
+3
+
+**********************************************************************
+
+Problem 8: Laserphones [Rob Kolstad, 2008]
+
+The cows have a new laser-based system so they can have casual
+conversations while out in the pasture which is modeled as a W x H
+grid of points (1 &lt;= W &lt;= 100; 1 &lt;= H &lt;= 100).
+
+The system requires a sort of line-of-sight connectivity in order
+to sustain communication. The pasture, of course, has rocks and
+trees that disrupt the communication but the cows have purchased
+diagonal mirrors ('/' and '\' below) that deflect the laser beam
+through a 90 degree turn. Below is a map that illustrates the
+problem.
+
+H is 8 and W is 7 for this map.  The two communicating cows are
+notated as 'C's; rocks and other blocking elements are notated as
+'*'s:
+
+7 . . . . . . .         7 . . . . . . .
+6 . . . . . . C         6 . . . . . /-C
+5 . . . . . . *         5 . . . . . | *
+4 * * * * * . *         4 * * * * * | *
+3 . . . . * . .         3 . . . . * | .
+2 . . . . * . .         2 . . . . * | .
+1 . C . . * . .         1 . C . . * | .
+0 . . . . . . .         0 . \-------/ .
+  0 1 2 3 4 5 6           0 1 2 3 4 5 6
+
+Determine the minimum number of mirrors M that must be installed
+to maintain laser communication between the two cows, a feat which
+is always possible in the given test data.
+
+PROBLEM NAME: lphone
+
+INPUT FORMAT:
+
+* Line 1: Two space separated integers: W and H
+
+* Lines 2..H+1: The entire pasture.
+
+SAMPLE INPUT (file lphone.in):
+
+7 8
+.......
+......C
+......*
+*****.*
+....*..
+....*..
+.C..*..
+.......
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer: M
+
+SAMPLE OUTPUT (file lphone.out):
+
+3
+
+**********************************************************************
+
+</PRE>
+<HR>
+
+<FORM action=/ioiupload method=post encType=multipart/form-data><INPUT 
+type=hidden value=YYmxJSFCWG9 name=a> 
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#000000 
+        border=0><TBODY>
+        <TR>
+          <TD height=1></TD></TR>
+        <TR>
+          <TD width=1>
+          <TD><FONT 
+            face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+            <TABLE cellPadding=5 width="100%" bgColor=#bfffbf>
+              <TBODY>
+              <TR>
+                <TD><B>Submit a program for grading:&nbsp;<B><INPUT type=file 
+                  name=filename> &nbsp;&nbsp; <INPUT type=submit value=Submit name=submit></B></B></TD></TR></TBODY></TABLE></FONT></TD>
+          <TD width=1></TD></TR>
+        <TR height=1>
+          <TD></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#000000 
+        border=0><TBODY>
+        <TR>
+          <TD height=1></TD></TR>
+        <TR>
+          <TD width=1>
+          <TD>
+            <TABLE cellPadding=5 width="100%" bgColor=#bfffbf>
+              <TBODY>
+              <TR>
+                <TD colSpan=2><FONT 
+                  face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"><B>To 
+                  run your program with your own test data, enter the 
+                  program<BR>file name and input file name then click 
+                  'Test':</B></FONT></TD></TR>
+              <TR>
+                <TD>
+                  <TABLE>
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <TABLE>
+                          <TBODY>
+                          <TR>
+                            <TD><FONT 
+                              face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"><B>Program&nbsp;File:&nbsp;</B></FONT></TD>
+                            <TD><INPUT type=file name=testprogramname></TD></TR>
+                          <TR>
+                            <TD align=right><FONT 
+                              face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"><B>Input&nbsp;File:&nbsp;</B></FONT></TD>
+                            <TD><INPUT type=file 
+                          name=testfilename></TD></TR></TBODY></TABLE></TD>
+                      <TD>&nbsp;&nbsp;</TD>
+                      <TD><INPUT type=submit value=Test name=submit></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+          <TD width=1></TD></TR>
+        <TR height=1>
+          <TD></TD></TR></TBODY></TABLE></TD></TD>
+  <TR>
+    <TD>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#000000 
+        border=0><TBODY>
+        <TR>
+          <TD height=1></TD></TR>
+        <TR>
+          <TD width=1>
+          <TD>
+            <TABLE cellPadding=5 width="100%" bgColor=#bfffbf>
+              <TBODY>
+              <TR>
+                <TD><FONT 
+                  face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"><B>Backup 
+                  a file:&nbsp;</B><INPUT type=file name=backupfilename> 
+                  &nbsp;&nbsp;&nbsp;<INPUT type=submit value=Backup name=submit> 
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <INPUT type=submit value="See Backups" name=submit> 
+              </FONT></TD></TR></TBODY></TABLE></TD>
+          <TD width=1></TD></TR>
+        <TR height=1>
+          <TD>
+          <TD></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD>
+      <HR>
+    </TD></TR></TBODY></TABLE><TR><TD><FONT 
+face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">The following 
+solution files are saved for grading:<BR>
+<TABLE cellSpacing=2>
+  <TBODY>
+  <TR>
+    <TH>Name</TH>
+    <TH>Size</TH>
+    <TH>When</TH>
+    <TH>Age</TH></TR>
+  <TR>
+    <TD><A 
+      href="http://ace.delos.com/ioiupload?a=YYmxJSFCWG9&amp;seesaved=mnoteb.c">mnoteb.c</A></TD>
+    <TD align=right>563</TD>
+    <TD align=right>5h58:01</TD>
+    <TD align=right>12h16:32</TD></TR></TBODY></TABLE></TD></TR>
+<HR>
+
+<CENTER><A href="http://ace.delos.com/ioiedit?a=YYmxJSFCWG9">Edit your database 
+record</A>&nbsp;|&nbsp; <A 
+href="http://ace.delos.com/ioiupload?a=YYmxJSFCWG9&amp;logout=1">Logout </A><!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->&nbsp;|&nbsp; 
+<A href="http://ace.delos.com/ioiupload?init=1&amp;a=YYmxJSFCWG9">Main contest 
+index</A> </CENTER><!--&nbsp;|&nbsp;-->
+<CENTER><A 
+href="http://ace.delos.com/ioiupload?a=YYmxJSFCWG9&amp;showsubmit">See submitted 
+solutions</A> &nbsp;|&nbsp; <A 
+href="http://ace.delos.com/ioiupload?a=YYmxJSFCWG9&amp;suggestionbox">Send 
+message to operations staff</A><BR>Director is not online<BR>This page was 
+generated at 1:14:33 GMT. </CENTER></FONT></FORM></BODY></HTML>

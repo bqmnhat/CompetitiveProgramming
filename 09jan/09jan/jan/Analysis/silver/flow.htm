@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0044)http://ace.delos.com/TESTDATA/JAN09.flow.htm -->
+<HTML><HEAD><TITLE>USACO JAN09 flow Analysis</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<STYLE type=text/css>BODY {
+	FONT-FAMILY: Verdana,Tahoma,sans-serif,Arial,Lucida
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1615" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<CENTER><IMG height=118 src="flow.files/cow1.jpg" width=742></CENTER>
+<H2>USACO JAN09 Problem 'flow' Analysis</H2>
+<H4>by John Pardon</H4>According to the problem statement, the total flow can be 
+determined using the simplification rules outlined in the problem statement. So, 
+all we have to do is repeatedly apply the rules to the input graph until it 
+becomes a single edge from the source to the sink. Then we know the max flow is 
+just the capacity of that edge. Since our vertex set is so small, it is most 
+convenient to represent out graph as a symmetric matrix of edge capacities. The 
+second simplification rule is actually implicit in this representation of the 
+graph, so we may just ignore it. A sample solution follows: <PRE>
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+
+using namespace std;
+
+int capacity[52][52];//global variables are automatically initialized to zero
+int E;
+
+#define MN(x,y) ((x) &lt; (y) ? (x) : (y))
+
+int main(void)
+{
+	FILE *inFile = fopen("flow.in", "rt");
+	fscanf(inFile, "%i", &amp;E);
+	for(int i = 0 ; i &lt; E ; i++)
+	{
+		char a,b;
+		int c;
+		fscanf(inFile, "%*c%c%*c%c%i", &amp;a, &amp;b, &amp;c);
+		if(a &gt;= 'a' &amp;&amp; a &lt;= 'z')
+			a += 'Z' + 1 - 'a';
+		if(b &gt;= 'a' &amp;&amp; b &lt;= 'z')
+			b += 'Z' + 1 - 'a';
+		capacity[a - 'A'][b - 'A'] += c;
+		capacity[b - 'A'][a - 'A'] += c;
+	}
+	fclose(inFile);
+	
+	bool changed;//flag to tell us if the graph has changed this iteration
+	do
+	{
+		changed = false;
+		for(int i = 0 ; i &lt; 52 ; i++)
+		if(i != 0 &amp;&amp; i != 25)
+		{
+			int first = -1;
+			int second = -1;
+			bool bad = false;
+			for(int j = 0 ; j &lt; 52 ; j++)
+			{
+				if(capacity[i][j] != 0)
+				{
+					if(first == -1)
+						first = j;
+					else if(second == -1)
+						second = j;
+					else
+						bad = true;
+				}
+			}
+//bad is set if vertex i has more than three pipes connected to it
+			if(bad)continue;
+			if(second != -1)//use the first simplification rule
+			{
+				capacity[first][second] += MN(capacity[first][i], capacity[i][second]);
+				capacity[second][first] += MN(capacity[first][i], capacity[i][second]);
+				capacity[first][i] = 0;
+				capacity[second][i] = 0;
+				capacity[i][first] = 0;
+				capacity[i][second] = 0;
+				
+				changed = true;
+			}
+			else if(first != -1)//use the third simplification rule
+			{
+				capacity[first][i] = capacity[i][first] = 0;
+				changed = true;
+			}
+		}
+	}while(changed);
+	
+	FILE *outFile = fopen("flow.out", "wt");
+	fprintf(outFile, "%i\n", capacity[0][25]);
+	fclose(outFile);
+	
+	return 0;
+}
+
+</PRE>There is actually a general algorithm to compute the max flow of an 
+arbitrary input graph. This algorithm goes as follows. The input is a directed 
+graph whose edges have weights (capacities). [If we want to find the max flow of 
+an undirected graph, turn it into a directed graph by doubling each edge]. In 
+pseudocode, the algorithm is: <PRE>
+"flow" = 0;
+do
+	find a path from source to sink
+	let "f" = the capacity of flow we can push through the path
+		[so "f" is the minimum edge capacity along the path]
+	augment a flow of "f" along the path
+	"flow" += "f";
+while "f" &gt; 0
+return "flow"
+
+</PRE>First, let's say what we mean "to augment some amount of flow along a 
+path". What we mean is to subtract "f" units of capacity from every edge along 
+the path, and then ADD "f" units of capacity to the REVERSE of every edge along 
+the path. Both convincing oneself of the correctness of this algorithm and 
+proving the correctness are good exercises. 
+<P>The "find a path" part of this algorithm is independent of the rest, and in 
+fact the way we find a path will affect the efficiency of the algorithm. To get 
+the fastest algorithm with reasonable coding time, one can use dijkstra's 
+algorithm to find the path of largest capacity from the source to the sink. In 
+contests, especially when the graph is small, a simple DFS often suffices. 
+Although one should not use a DFS when efficiency is important, the 
+implementation is particularly nice, since we can augment the path as we walk up 
+the DFS stack (see below for details). A sample solution is below: <PRE>
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cassert&gt;
+
+using namespace std;
+
+int capacity[52][52];
+int E;
+
+bool vv[52];
+
+#define MN(x,y) ((x) &lt; (y) ? (x) : (y))
+
+int FLow(int v, int maxC)//DFS to find a flow path
+{
+	if(vv[v])return 0;
+	vv[v] = true;
+	if(v == 25)
+	{
+		return maxC;
+	}
+	for(int i = 0 ; i &lt; 52 ; i++)
+	if(capacity[v][i])
+	{
+		assert(capacity[v][i] &gt; 0);
+		int dd = maxC;
+		if(dd &gt; capacity[v][i])
+			dd = capacity[v][i];
+		int fff = FLow(i, dd);
+		if(fff)//we found a path
+		{
+			assert(fff &lt;= capacity[v][i]);
+			assert(fff &gt; 0);
+			capacity[v][i] -= fff;//augmentation step 1
+			capacity[i][v] += fff;//augmentation step 2
+			return fff;
+		}
+	}
+}
+
+int Flow(void)
+{
+	memset(vv, false, sizeof(vv));
+//the array vv tells us what vertices we have visited in the DFS
+	return FLow(0, 20000000);
+}
+
+int main(void)
+{
+	FILE *inFile = fopen("flow.in", "rt");
+	fscanf(inFile, "%i", &amp;E);
+	printf("%i\n", E);
+	for(int i = 0 ; i &lt; E ; i++)
+	{
+		char a,b;
+		int c;
+		fscanf(inFile, "%*c%c%*c%c%i", &amp;a, &amp;b, &amp;c);
+		if(a &gt;= 'a' &amp;&amp; a &lt;= 'z')
+			a += 'Z' + 1 - 'a';
+		if(b &gt;= 'a' &amp;&amp; b &lt;= 'z')
+			b += 'Z' + 1 - 'a';
+		capacity[a - 'A'][b - 'A'] += c;
+		capacity[b - 'A'][a - 'A'] += c;
+	}
+	fclose(inFile);
+	
+	int FLOW = 0;
+	int flow = 0;
+	while((flow = Flow()) != 0)//while we can push more flow
+	{
+		FLOW += flow;//add this flow to the total flow
+	}
+	
+	FILE *outFile = fopen("flow.out", "wt");
+	fprintf(outFile, "%i\n", FLOW);
+	fclose(outFile);
+	
+	return 0;
+}
+
+</PRE></BODY></HTML>

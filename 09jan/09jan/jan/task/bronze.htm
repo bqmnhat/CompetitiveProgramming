@@ -1,0 +1,407 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0061)http://ace.delos.com/ioiupload?d=bronze&a=YYmxJSFCWG9&lang=en -->
+<HTML><HEAD><TITLE>USACO Problems</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META http-equiv=Pragma content=no-cache>
+<SCRIPT language=javascript>
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</SCRIPT>
+
+<META content="MSHTML 6.00.2800.1615" name=GENERATOR></HEAD>
+<BODY background=bronze.files/bg9.jpg onload=""><FONT 
+face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><IMG src="bronze.files/cowhead2.gif"> </TD>
+    <TD vAlign=top>
+      <TABLE cellSpacing=0 cellPadding=0>
+        <TBODY>
+        <TR>
+          <TD>Contest: JAN09</TD></TR>
+        <TR>
+          <TD></TD></TR>
+        <TR>
+          <TD></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><FONT 
+color=red><B></B></FONT><BR><FONT size=6 <b>ANALYSIS MODE</B></FONT><BR>Submit 
+solutions for your own enjoyment. </FONT><PRE>**********************************************************************
+                           BRONZE PROBLEMS
+**********************************************************************
+                  Three problems numbered 11 through 13
+**********************************************************************
+
+Problem 11: Scrabble [Traditional, 2009]
+
+Bessie is playing Bovine Scrabble which is just like regular Scrabble
+except that a player's tray has T (3 &lt;= T &lt;= 20) letters instead
+of always having 7 letters as in the normal game.
+
+For those who haven't played English Scrabble, it is a word game
+where each player has a set of T letters and uses them to form a
+word to place on a gameboard which ends up looking a little bit
+like a crossword puzzle. For this task, Bessie has the first play
+and cares only to make a word from one or more of her letters
+(without worrying how to fit it onto the board).
+
+Each letter has a value (see the table below). A word's value, for
+this task's purposes, is the sum of values of each of the letters.
+Thus, the word "TAX" has three letters, each with a value: "T"
+with 1 point, "A" with 1 point, and "X" with 8 point -- total: 10
+points. No other bonus points are considered in this task. Bessie
+might use one, some, or all of her letters to make the highest
+scoring word.
+
+This game also includes blank letters (which are represented as "#"
+in the input). Blank letters can be used to represent any other
+letter but receives 0 points no matter which letter is chosen. Only
+three of the test data inputs will contain one or more blanks. Each
+blank letter can, if desired, represent a different actual letter
+for purposes of forming words.
+
+Given T and a set of T letters, read the dictionary from file
+dict.txt (which is alphabetized and has fewer than 25,000 words;
+each word is no longer than 20 characters) and determine which is
+the most valuable word that can be made from Bessie's letters. If
+two words have the same value, choose the one that comes first
+alphabetically.
+
+The actual dictionary used in this task is available at
+http://ace.delos.com/usaco/dict.txt . Bessie can always find
+some word in that dictionary to form with her letters.
+
+Letter values:
+     0 points:  # (blank)
+     1 point:   A, E, I, L, N, O, R, S, T, U
+     2 points:  D, G
+     3 points:  B, C, M, P
+     4 points:  F, H, V, W, Y
+     5 points:  K
+     8 points:  J, X
+     10 points: Q, Z
+
+PROBLEM NAME: scrab
+
+INPUT FORMAT:
+
+* Line 1: A single integer: T
+
+* Lines 2..T+1: Each line has a single character that appears in
+        Bessie's letter tray
+
+SAMPLE INPUT (file scrab.in):
+
+3
+A
+T
+X
+
+OUTPUT FORMAT:
+
+* Line 1: A single line with a single word (the word -- no '#' blanks)
+        that is the highest-scoring word Bessie can make.
+
+SAMPLE OUTPUT (file scrab.out):
+
+TAX
+
+**********************************************************************
+
+Problem 12: Back to the Barn [Neal Wu, 2008]
+
+As every cow does occasionally, Bessie has lost herself in the
+woods! She desperately needs to get back to the barn but has no
+idea where to go.
+
+The woods can be thought of as an R x C grid (1 &lt;= R &lt;= 5; 1 &lt;= C
+&lt;= 5). Bessie is located in the lower left corner at row 1, column
+1; the barn is located in the upper right corner at in row R, column
+C.  Each square in the grid is either empty (denoted by '.') or
+blocked by a tree (denoted by 'T'). Bessie's square and the barn
+will always be empty.
+
+From a given square, Bessie may move to any adjacent square (one
+that shares a long edge with Bessie's current square) as long as
+it is empty. As Bessie is quite a smart cow, she never visits a
+square twice on the way back to the barn.
+
+Determine the number of different ways Bessie can take that lead
+her from her initial position back to the barn while visiting at
+most K different squares (1 &lt;= K &lt;= R * C).
+
+By way of example, consider this forest:
+
+        ....
+        .T..
+        ....
+
+Bessie has a number of ways to get to the upper right corner, here
+are all seven of them and their path lengths (the number of squares
+visited):
+
+         cdef  ...f  ..ef  ..gh  cdeh  cdej  ...f  
+         bT..  .T.e  .Td.  .Tfe  bTfg  bTfi  .Tde  
+         a...  abcd  abc.  abcd  a...  a.gh  abc.  
+Length:    6     6     6     8     8    10    6
+
+PROBLEM NAME: backbarn
+
+INPUT FORMAT:
+
+* Line 1: Three space-separated integers: R, C, and K
+
+* Lines 2..R+1: Line i+1 contains the C characters representing row
+        R+1-i of the forest (with no spaces)
+
+SAMPLE INPUT (file backbarn.in):
+
+3 4 6
+....
+.T..
+....
+
+INPUT DETAILS:
+
+The forest is a 3 x 4 grid. A single tree sits almost in the middle,
+as shown. No more than six steps can be taken.
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer that is the number of different paths,
+        visiting at most K squares, that Bessie can take to get back
+        to the barn. Note that this number will always fit into a
+        signed 32-bit integer.
+
+SAMPLE OUTPUT (file backbarn.out):
+
+4
+
+OUTPUT DETAILS:
+
+Of the several evenays to complete the traversal, only four of them touch
+no more than six squares along the route.
+
+**********************************************************************
+
+Problem 13: Music Notes [Neal Wu, 2008]
+
+FJ is going to teach his cows how to play a song. The song consists
+of N (1 &lt;= N &lt;= 100) notes, and the i-th note lasts for B_i (1 &lt;=
+B_i &lt;= 100) beats. The cows will begin playing the song at time 0;
+thus, they will play note 1 from time 0 to time B_1 - 1, note 2
+fromtime B_1 to time B_1 + B_2 - 1, etc.
+
+The cows have lost interest in the song, as they feel that it is
+long and boring. Thus, to make sure his cows are paying attention,
+FJ asks them Q (1 &lt;= Q &lt;= 1,000) questions of the form, "During the
+beat at time T_i (0 &lt;= T_i &lt; length of song), which note should you be
+playing?" The cows need your help to answer these questions.
+
+By way of example, consider a song with these specifications: note
+1 for length 2, note 2 for length 1, and note 3 for length 3:
+
+NOTES    1   1   2   3   3   3
+       +---+---+---+---+---+---+
+TIME     0   1   2   3   4   5
+
+PROBLEM NAME: mnoteb
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: N and Q
+
+* Lines 2..N+1: Line i+1 contains a single integer: B_i
+
+* Lines N+2..N+Q+1: Line N+i+1 contains a single integer: T_i
+
+SAMPLE INPUT (file mnoteb.in):
+
+3 5
+2
+1
+3
+2
+3
+4
+0
+1
+
+INPUT DETAILS:
+
+The song has 3 notes, with lengths 2, 1, and 3. FJ has 5 queries.
+
+OUTPUT FORMAT:
+
+* Lines 1..Q: Line i contains the a single integer that is the note
+        the cows should be playing at time T_i
+
+SAMPLE OUTPUT (file mnoteb.out):
+
+2
+3
+3
+1
+1
+
+OUTPUT DETAILS:
+
+As per the chart above.
+
+**********************************************************************
+
+</PRE>
+<HR>
+
+<FORM action=/ioiupload method=post encType=multipart/form-data><INPUT 
+type=hidden value=YYmxJSFCWG9 name=a> 
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#000000 
+        border=0><TBODY>
+        <TR>
+          <TD height=1></TD></TR>
+        <TR>
+          <TD width=1>
+          <TD><FONT 
+            face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+            <TABLE cellPadding=5 width="100%" bgColor=#bfffbf>
+              <TBODY>
+              <TR>
+                <TD><B>Submit a program for grading:&nbsp;<B><INPUT type=file 
+                  name=filename> &nbsp;&nbsp; <INPUT type=submit value=Submit name=submit></B></B></TD></TR></TBODY></TABLE></FONT></TD>
+          <TD width=1></TD></TR>
+        <TR height=1>
+          <TD></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#000000 
+        border=0><TBODY>
+        <TR>
+          <TD height=1></TD></TR>
+        <TR>
+          <TD width=1>
+          <TD>
+            <TABLE cellPadding=5 width="100%" bgColor=#bfffbf>
+              <TBODY>
+              <TR>
+                <TD colSpan=2><FONT 
+                  face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"><B>To 
+                  run your program with your own test data, enter the 
+                  program<BR>file name and input file name then click 
+                  'Test':</B></FONT></TD></TR>
+              <TR>
+                <TD>
+                  <TABLE>
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <TABLE>
+                          <TBODY>
+                          <TR>
+                            <TD><FONT 
+                              face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"><B>Program&nbsp;File:&nbsp;</B></FONT></TD>
+                            <TD><INPUT type=file name=testprogramname></TD></TR>
+                          <TR>
+                            <TD align=right><FONT 
+                              face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"><B>Input&nbsp;File:&nbsp;</B></FONT></TD>
+                            <TD><INPUT type=file 
+                          name=testfilename></TD></TR></TBODY></TABLE></TD>
+                      <TD>&nbsp;&nbsp;</TD>
+                      <TD><INPUT type=submit value=Test name=submit></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+          <TD width=1></TD></TR>
+        <TR height=1>
+          <TD></TD></TR></TBODY></TABLE></TD></TD>
+  <TR>
+    <TD>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#000000 
+        border=0><TBODY>
+        <TR>
+          <TD height=1></TD></TR>
+        <TR>
+          <TD width=1>
+          <TD>
+            <TABLE cellPadding=5 width="100%" bgColor=#bfffbf>
+              <TBODY>
+              <TR>
+                <TD><FONT 
+                  face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"><B>Backup 
+                  a file:&nbsp;</B><INPUT type=file name=backupfilename> 
+                  &nbsp;&nbsp;&nbsp;<INPUT type=submit value=Backup name=submit> 
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <INPUT type=submit value="See Backups" name=submit> 
+              </FONT></TD></TR></TBODY></TABLE></TD>
+          <TD width=1></TD></TR>
+        <TR height=1>
+          <TD>
+          <TD></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD>
+      <HR>
+    </TD></TR></TBODY></TABLE><TR><TD><FONT 
+face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">The following 
+solution files are saved for grading:<BR>
+<TABLE cellSpacing=2>
+  <TBODY>
+  <TR>
+    <TH>Name</TH>
+    <TH>Size</TH>
+    <TH>When</TH>
+    <TH>Age</TH></TR>
+  <TR>
+    <TD><A 
+      href="http://ace.delos.com/ioiupload?a=YYmxJSFCWG9&amp;seesaved=mnoteb.c">mnoteb.c</A></TD>
+    <TD align=right>563</TD>
+    <TD align=right>5h58:01</TD>
+    <TD align=right>12h16:44</TD></TR></TBODY></TABLE></TD></TR>
+<HR>
+
+<CENTER><A href="http://ace.delos.com/ioiedit?a=YYmxJSFCWG9">Edit your database 
+record</A>&nbsp;|&nbsp; <A 
+href="http://ace.delos.com/ioiupload?a=YYmxJSFCWG9&amp;logout=1">Logout </A><!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->&nbsp;|&nbsp; 
+<A href="http://ace.delos.com/ioiupload?init=1&amp;a=YYmxJSFCWG9">Main contest 
+index</A> </CENTER><!--&nbsp;|&nbsp;-->
+<CENTER><A 
+href="http://ace.delos.com/ioiupload?a=YYmxJSFCWG9&amp;showsubmit">See submitted 
+solutions</A> &nbsp;|&nbsp; <A 
+href="http://ace.delos.com/ioiupload?a=YYmxJSFCWG9&amp;suggestionbox">Send 
+message to operations staff</A><BR>Director is not online<BR>This page was 
+generated at 1:14:45 GMT. </CENTER></FONT></FORM></BODY></HTML>

@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1608984351 source:d:\bai tap star\22.11.2020\boxes\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+
+1608984793 source:d:\mylab\btth\22.11.2020\boxes\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1639491742 source:d:\mylab\btth\30.11.2021\frog\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

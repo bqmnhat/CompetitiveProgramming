@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0046)http://ace.delos.com/TESTDATA/JAN09.damage.htm -->
+<HTML><HEAD><TITLE>USACO JAN09 damage Analysis</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<STYLE type=text/css>BODY {
+	FONT-FAMILY: Verdana,Tahoma,sans-serif,Arial,Lucida
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1615" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<CENTER><IMG height=118 src="damage.files/cow1.jpg" width=742></CENTER>
+<H2>USACO JAN09 Problem 'damage' Analysis</H2>
+<H4>by Richard Peng</H4>
+<P>We first consider the local structure of the farm after the earth quake. 
+<P>Let v be a field that's undamaged but cannot return to the barn. Let u be 
+another field such that there is a path between u and v. Then if u is undamaged 
+and cows can return to the barn from it, then walking along the path from v to u 
+then taking that path returns the cows to the barn as well. Therefore, u must be 
+either damaged or cannot return to the barn. 
+<P>One interesting observation is that for all the vertices that are not among 
+the ones listed that are unreachable from the barn, there is no additional 
+penalty of listing them as damaged. So we have a minimum set of 'damaged' 
+fields. Marking these as damaged then doing a flood fill from the barn gives the 
+minimum number of fields that cannot reach the barn. 
+<P>Under this algorithm, any field marked unreachable must satisfy that all 
+paths from the barn to it must go through a neighbor of the reported fields. 
+Since all of those fields cannot reach the barn via undamaged fields, the 
+unreachibility of the marked fields follows. </P></BODY></HTML>

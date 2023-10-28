@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1636803403 source:d:\mylab\btth\09.10.2021\lights\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

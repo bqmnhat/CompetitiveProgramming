@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1616250674 source:d:\mylab\btth\20.03.2021\mario\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

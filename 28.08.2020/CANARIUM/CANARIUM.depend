@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1600515046 source:d:\bai tap star\28.08.2020\canarium\main.cpp
+	<iostream>
+	<fstream>
+	<cmath>
+

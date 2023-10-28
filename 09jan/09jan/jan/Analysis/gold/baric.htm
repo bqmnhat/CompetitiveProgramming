@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0045)http://ace.delos.com/TESTDATA/JAN09.baric.htm -->
+<HTML><HEAD><TITLE>USACO JAN09 baric Analysis</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<STYLE type=text/css>BODY {
+	FONT-FAMILY: Verdana,Tahoma,sans-serif,Arial,Lucida
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1615" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<CENTER><IMG height=118 src="baric.files/cow1.jpg" width=742></CENTER>
+<H2>USACO JAN09 Problem 'baric' Analysis</H2>
+<H4>by Richard Peng</H4>
+<P>The problem can be solved by dynamic programming. We turn this problem into 
+the following: partial the array into k+1 segments such that the total error is 
+minimized. The division points between consecutive segments correspond to the 
+measurement and once we computed this information for all k, the answer can be 
+extrated. 
+<P>Given a single interval, the error can be computed by looping through the 
+elements. Of course, special cases are needed for the intervals starting at the 
+begining or ending with the last entry. 
+<P>Then to compute best[i,k] when k&gt;2, consider the interval the last element 
+is involved in. If it's at j, then the best value of the segment is best[j,k-1] 
+along with the error of the interval [i,j] using 1 measurement (which we compute 
+earlier). 
+<P>There are O(N^2) states of the DP, with O(n) possible transitoins. Along with 
+the precomputation, the algorithm takes O(n^3). </P></BODY></HTML>

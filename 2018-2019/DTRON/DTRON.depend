@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1620965575 source:d:\mylab\btth\2018-2019\dtron\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

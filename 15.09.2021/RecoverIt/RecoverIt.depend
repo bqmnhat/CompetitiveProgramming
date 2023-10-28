@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1631702073 source:d:\mylab\btth\15.09.2021\recoverit\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

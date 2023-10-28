@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1607177402 source:d:\bai tap star\22.11.2020\olympic\main.cpp
+	<iostream>
+	<cstdio>
+	<algorithm>
+
+1607177402 source:d:\mylab\btth\22.11.2020\olympic\main.cpp
+	<iostream>
+	<cstdio>
+	<algorithm>
+

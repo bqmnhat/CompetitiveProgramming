@@ -1,0 +1,428 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0059)http://ace.delos.com/ioiupload?d=gold&a=YYmxJSFCWG9&lang=en -->
+<HTML><HEAD><TITLE>USACO Problems</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META http-equiv=Pragma content=no-cache>
+<SCRIPT language=javascript>
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</SCRIPT>
+
+<META content="MSHTML 6.00.2800.1615" name=GENERATOR></HEAD>
+<BODY background=golden.files/bg9.jpg onload=""><FONT 
+face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><IMG src="golden.files/cowhead2.gif"> </TD>
+    <TD vAlign=top>
+      <TABLE cellSpacing=0 cellPadding=0>
+        <TBODY>
+        <TR>
+          <TD>Contest: JAN09</TD></TR>
+        <TR>
+          <TD></TD></TR>
+        <TR>
+          <TD></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><FONT 
+color=red><B></B></FONT><BR><FONT size=6 <b>ANALYSIS MODE</B></FONT><BR>Submit 
+solutions for your own enjoyment. </FONT><PRE>**********************************************************************
+                           GOLD PROBLEMS
+**********************************************************************
+                  Three problems numbered 1 through 3
+**********************************************************************
+
+Problem 1: Earthquake Damage [Hal Burch, 2004]
+
+Wisconsin has had an earthquake that has struck Farmer John's farm!
+The earthquake has damaged some of the pastures so that they are
+unpassable. Remarkably, none of the cowpaths was damaged.
+
+As usual, the farm is modeled as a set of P (1 &lt;= P &lt;= 30,000)
+pastures conveniently numbered 1..P which are connected by a set
+of C (1 &lt;= C &lt;= 100,000) non-directional cowpaths conveniently
+numbered 1..C. Cowpath i connects pastures a_i and b_i (1 &lt;= a_i
+&lt;= P; 1 &lt;= b_i &lt;= P). Cowpaths might connect a_i to itself or perhaps
+might connect two pastures more than once.  The barn is located in
+pasture 1.
+
+A total of N (1 &lt;= N &lt;= P) cows (in different pastures) sequentially
+contact Farmer John via moobile phone with an integer message
+report_j (2 &lt;= report_j &lt;= P) that indicates that pasture report_j
+is undamaged but that the calling cow is unable to return to the
+barn from pasture report_j because she could not find a path that
+does not go through damaged pastures.
+
+After all the cows report in, determine the minimum number of
+pastures (including ones that are uncrossable) from which it is not
+possible to return to the barn.
+
+Note: Feedback on some of the test data will be provided on the
+first 50 submissions
+
+PROBLEM NAME: damage
+
+INPUT FORMAT:
+
+* Line 1: Three space-separated integers: P, C, and N
+
+* Lines 2..C+1: Line i+1 describes cowpath i with two integers: a_i
+        and b_i
+
+* Lines C+2..C+N+1: Line C+1+j contains a single integer: report_j
+
+SAMPLE INPUT (file damage.in):
+
+4 3 1
+1 2
+2 3
+3 4
+3
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer that is the minimum count of pastures from
+        which a cow can not return to the barn (including the damaged
+        pastures themselves)
+
+SAMPLE OUTPUT (file damage.out):
+
+3
+
+OUTPUT DETAILS:
+
+Pasture 2 is damaged, resulting in cows in pastures 2, 3, 4 not being able to
+return to the barn.
+
+**********************************************************************
+
+Problem 2: The Baric Bovine [Jeffrey Wang, 2007]
+
+Following up on a journal article about increasing milk production,
+Bessie has become the Baric Bovine by studying atmospheric pressure
+in order to curry favor with Farmer John.
+
+She takes N (1 &lt;= N &lt;= 100) measurements conveniently named M_1
+through M_N during the day (1 &lt;= M_i &lt;= 1,000,000); these measurements
+are numbered in the order in which Bessie observed them.
+
+In order to characterize the day's atmospheric pressure readings,
+she is interested in finding a subset of the measurements (given
+by the K (1 &lt;= K &lt;= N) indices s_j where 1 &lt;= s_1 &lt; s_2 &lt; ... &lt; s_K
+&lt;= N) that accurately reflects the entire set, i.e., limits the
+error as described below.
+
+In any subset of measurements, an error is incurred for each
+measurement (1) before the first member of the subset, (2) between
+two consecutive measurements in the subset, and (3) after the last
+member of the subset. The total error value for a given set of s_j
+values is the sum of each of the individual errors.
+
+Specifically, for all measurements whose index i is not one of the
+s_j values:
+
+* if i is less than s_1, then the sample error is:
+             2 * | M_i - M_(s_1) | 
+
+* if i is between s_j and s_(j+1), then the sample error is
+            | 2 * M_i - Sum(s_j, s_(j+1)) |  
+  where Sum(x, y) = M_x + M_y;
+
+* if i is greater than s_K, then the sample error is
+             2 * | M_i - M_(s_K) |
+
+Given a maximum error value E (1 &lt;= E &lt;= 1,000,000), determine the
+size of the smallest subset of measurements that produces an error
+of at most E.
+
+PROBLEM NAME: baric
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: N and E
+
+* Lines 2..N+1: Line i+1 contains a single integer: M_i
+
+SAMPLE INPUT (file baric.in):
+
+4 20
+10
+3
+20
+40
+
+INPUT DETAILS:
+
+Bessie takes four measurements; the maximum error is 20. The
+measurements are, in sequence: 10, 3, 20, and 40.
+
+OUTPUT FORMAT:
+
+* Line 1: Two space-separated integers: the size of the smallest
+        subset of measurements that produces an error of at most E and
+        the least possible error for the subset of that size.
+
+SAMPLE OUTPUT (file baric.out):
+
+2 17
+
+OUTPUT DETAILS:
+
+Choosing the second and fourth measurements is the best option,
+giving an error of 17. The first term's error is 2*|10-3| = 14; the
+third term's error is |2*20 - (3+40)| = 3.
+
+**********************************************************************
+
+Problem 3: Safe Travel [Long Fan, 2008]
+
+Gremlins have infested the farm. These nasty, ugly fairy-like
+creatures thwart the cows as each one walks from the barn (conveniently
+located at pasture_1) to the other fields, with cow_i traveling to
+from pasture_1 to pasture_i. Each gremlin is personalized and knows
+the quickest path that cow_i normally takes to pasture_i. Gremlin_i
+waits for cow_i in the middle of the final cowpath of the quickest
+route to pasture_i, hoping to harass cow_i.
+
+Each of the cows, of course, wishes not to be harassed and thus
+chooses an at least slightly  different route from pasture_1 (the
+barn) to pasture_i.
+
+Compute the best time to traverse each of these new not-quite-quickest
+routes that enable each cow_i that avoid gremlin_i who is located
+on the final cowpath of the quickest route from pasture_1 to
+pasture_i.
+
+As usual, the M (2 &lt;= M &lt;= 200,000) cowpaths conveniently numbered
+1..M are bidirectional and enable travel to all N (3 &lt;= N &lt;= 100,000)
+pastures conveniently numbered 1..N. Cowpath i connects pastures
+a_i (1 &lt;= a_i &lt;= N) and b_i (1 &lt;= b_i &lt;= N) and requires t_i (1 &lt;=
+t_i &lt;= 1,000) time to traverse. No two cowpaths connect the same
+two pastures, and no path connects a pasture to itself (a_i != b_i).
+Best of all, the shortest path regularly taken by cow_i from pasture_1
+to pasture_i is unique in all the test data supplied to your program.
+
+By way of example, consider these pastures, cowpaths, and [times]:
+
+      1--[2]--2-------+
+      |       |       |
+     [2]     [1]     [3]
+      |       |       |
+      +-------3--[4]--4
+
+   TRAVEL     BEST ROUTE   BEST TIME   LAST PATH
+p_1 to p_2       1-&gt;2          2         1-&gt;2
+p_1 to p_3       1-&gt;3          2         1-&gt;3
+p_1 to p_4      1-&gt;2-&gt;4        5         2-&gt;4
+
+When gremlins are present:
+
+   TRAVEL     BEST ROUTE   BEST TIME    AVOID
+p_1 to p_2     1-&gt;3-&gt;2         3         1-&gt;2
+p_1 to p_3     1-&gt;2-&gt;3         3         1-&gt;3
+p_1 to p_4     1-&gt;3-&gt;4         6         2-&gt;4
+
+For 20% of the test data, N &lt;= 200.
+
+For 50% of the test data, N &lt;= 3000.
+
+TIME LIMIT: 3 Seconds
+
+MEMORY LIMIT: 64 MB
+
+PROBLEM NAME: travel
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: N and M
+
+* Lines 2..M+1: Three space-separated integers: a_i, b_i, and t_i
+
+SAMPLE INPUT (file travel.in):
+
+4 5
+1 2 2
+1 3 2
+3 4 4
+3 2 1
+2 4 3
+
+INPUT DETAILS:
+
+As in the text example.
+
+OUTPUT FORMAT:
+
+* Lines 1..N-1: Line i contains the smallest time required to travel
+        from pasture_1 to pasture_i+1 while avoiding the final cowpath
+        of the shortest path from pasture_1 to pasture_i+1. If no such
+        path exists from pasture_1 to pasture_i+1, output -1 alone on
+        the line.
+
+SAMPLE OUTPUT (file travel.out):
+
+3
+3
+6
+
+OUTPUT DETAILS:
+
+As in the text example.
+
+**********************************************************************
+
+</PRE>
+<HR>
+
+<FORM action=/ioiupload method=post encType=multipart/form-data><INPUT 
+type=hidden value=YYmxJSFCWG9 name=a> 
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#000000 
+        border=0><TBODY>
+        <TR>
+          <TD height=1></TD></TR>
+        <TR>
+          <TD width=1>
+          <TD><FONT 
+            face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+            <TABLE cellPadding=5 width="100%" bgColor=#bfffbf>
+              <TBODY>
+              <TR>
+                <TD><B>Submit a program for grading:&nbsp;<B><INPUT type=file 
+                  name=filename> &nbsp;&nbsp; <INPUT type=submit value=Submit name=submit></B></B></TD></TR></TBODY></TABLE></FONT></TD>
+          <TD width=1></TD></TR>
+        <TR height=1>
+          <TD></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#000000 
+        border=0><TBODY>
+        <TR>
+          <TD height=1></TD></TR>
+        <TR>
+          <TD width=1>
+          <TD>
+            <TABLE cellPadding=5 width="100%" bgColor=#bfffbf>
+              <TBODY>
+              <TR>
+                <TD colSpan=2><FONT 
+                  face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"><B>To 
+                  run your program with your own test data, enter the 
+                  program<BR>file name and input file name then click 
+                  'Test':</B></FONT></TD></TR>
+              <TR>
+                <TD>
+                  <TABLE>
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <TABLE>
+                          <TBODY>
+                          <TR>
+                            <TD><FONT 
+                              face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"><B>Program&nbsp;File:&nbsp;</B></FONT></TD>
+                            <TD><INPUT type=file name=testprogramname></TD></TR>
+                          <TR>
+                            <TD align=right><FONT 
+                              face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"><B>Input&nbsp;File:&nbsp;</B></FONT></TD>
+                            <TD><INPUT type=file 
+                          name=testfilename></TD></TR></TBODY></TABLE></TD>
+                      <TD>&nbsp;&nbsp;</TD>
+                      <TD><INPUT type=submit value=Test name=submit></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+          <TD width=1></TD></TR>
+        <TR height=1>
+          <TD></TD></TR></TBODY></TABLE></TD></TD>
+  <TR>
+    <TD>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#000000 
+        border=0><TBODY>
+        <TR>
+          <TD height=1></TD></TR>
+        <TR>
+          <TD width=1>
+          <TD>
+            <TABLE cellPadding=5 width="100%" bgColor=#bfffbf>
+              <TBODY>
+              <TR>
+                <TD><FONT 
+                  face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"><B>Backup 
+                  a file:&nbsp;</B><INPUT type=file name=backupfilename> 
+                  &nbsp;&nbsp;&nbsp;<INPUT type=submit value=Backup name=submit> 
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <INPUT type=submit value="See Backups" name=submit> 
+              </FONT></TD></TR></TBODY></TABLE></TD>
+          <TD width=1></TD></TR>
+        <TR height=1>
+          <TD>
+          <TD></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD>
+      <HR>
+    </TD></TR></TBODY></TABLE><TR><TD><FONT 
+face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">The following 
+solution files are saved for grading:<BR>
+<TABLE cellSpacing=2>
+  <TBODY>
+  <TR>
+    <TH>Name</TH>
+    <TH>Size</TH>
+    <TH>When</TH>
+    <TH>Age</TH></TR>
+  <TR>
+    <TD><A 
+      href="http://ace.delos.com/ioiupload?a=YYmxJSFCWG9&amp;seesaved=mnoteb.c">mnoteb.c</A></TD>
+    <TD align=right>563</TD>
+    <TD align=right>5h58:01</TD>
+    <TD align=right>12h16:14</TD></TR></TBODY></TABLE></TD></TR>
+<HR>
+
+<CENTER><A href="http://ace.delos.com/ioiedit?a=YYmxJSFCWG9">Edit your database 
+record</A>&nbsp;|&nbsp; <A 
+href="http://ace.delos.com/ioiupload?a=YYmxJSFCWG9&amp;logout=1">Logout </A><!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->&nbsp;|&nbsp; 
+<A href="http://ace.delos.com/ioiupload?init=1&amp;a=YYmxJSFCWG9">Main contest 
+index</A> </CENTER><!--&nbsp;|&nbsp;-->
+<CENTER><A 
+href="http://ace.delos.com/ioiupload?a=YYmxJSFCWG9&amp;showsubmit">See submitted 
+solutions</A> &nbsp;|&nbsp; <A 
+href="http://ace.delos.com/ioiupload?a=YYmxJSFCWG9&amp;suggestionbox">Send 
+message to operations staff</A><BR>Director is not online<BR>This page was 
+generated at 1:14:15 GMT. </CENTER></FONT></FORM></BODY></HTML>

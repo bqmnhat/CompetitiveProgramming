@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1621005660 source:d:\mylab\btth\2017-2018\doanphu\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

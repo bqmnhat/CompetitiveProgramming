@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1614428287 source:d:\mylab\btth\22.11.2020\tvshow\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1603526819 source:d:\bai tap star\28.08.2020\chuso\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+	<cstring>
+

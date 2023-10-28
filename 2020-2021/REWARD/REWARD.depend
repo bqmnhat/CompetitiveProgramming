@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1622525121 source:d:\mylab\btth\2020-2021\reward\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

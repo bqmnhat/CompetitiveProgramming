@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1597919485 source:d:\bai tap star\08.08.2020\mobile\main.cpp
+	<iostream>
+	<fstream>
+

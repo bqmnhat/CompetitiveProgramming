@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1601113036 source:d:\bai tap star\28.08.2020\primediv\main.cpp
+	<iostream>
+	<fstream>
+	<cmath>
+

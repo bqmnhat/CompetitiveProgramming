@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1601655972 source:d:\bai tap star\28.08.2020\robot\main.cpp
+	<iostream>
+	<fstream>
+
+1604150077 source:d:\bai tap star\24.10.2020\robot\main.cpp
+	<iostream>
+	<cstdio>
+

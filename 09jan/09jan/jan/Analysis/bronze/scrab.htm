@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0045)http://ace.delos.com/TESTDATA/JAN09.scrab.htm -->
+<HTML><HEAD><TITLE>USACO JAN09 scrab Analysis</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<STYLE type=text/css>BODY {
+	FONT-FAMILY: Verdana,Tahoma,sans-serif,Arial,Lucida
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1615" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<CENTER><IMG height=118 src="scrab.files/cow1.jpg" width=742></CENTER>
+<H2>USACO JAN09 Problem 'scrab' Analysis</H2>
+<H4>by Rob Kolstad</H4>
+<P>The goal is to find the 'best' word creatable with a set of supplied letters. 
+Letter-scoring for each A-Z letter is supplied; blanks can be any letter and 
+score 0. A dictionary is supplied. 
+<P>Consider the first subproblem: Can one create a given word with the set of 
+supplied letters? One could be clever with bitmaps but they don't allow simple 
+checking for double-letters. 
+<P>Consider an array (say, 'gotlets') whose contents tell the number of each A-Z 
+letter available for word formation (e.g., gotlets['L'] = 2 when two 'L's are 
+available for word formation). One could then create a second array 
+('mygotlets') that contained the counts of the letters in a given word to see if 
+the 'gotlets' array can accommodate them. This has the additional advantage that 
+length doesn't matter (i.e., shorter dictionary words will succeed the test even 
+if all the player's available letters are not used). 
+<P>But what about blanks? Well, if one keeps track of 'mygotlets' and the count 
+of letters that exceed the correspond value of 'mylets' (let's call that 
+'nbad'), the necessary condition for ability to create the dictionary word in 
+question is just "nbad &lt;= nblanks_available". 
+<P>One can even combine the scoring algorithm with accumulation of 'mygotlets' 
+so make a simple loop. 
+<P>Below is my sample answer. The dual loop termiantion conditions (where both 
+newline and end-of-string are tested) are because I can never remember whether 
+fgets returns the newline on the end or not; this code works either way. <PRE>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+int score[256];
+char best[100];
+int ntray, ndict, nblanks, gotlets[256], bestscore;
+
+initscore() {
+    score['#'] = 0;
+    score['A'] = score['E'] = score['I'] = score['L'] = score['N'] =
+        score['O'] = score['R'] = score['S'] = score['T'] = score['U'] = 1;
+    score['D'] = score['G'] = 2;
+    score['B'] = score['C'] = score['M'] = score['P'] = 3;
+    score['F'] = score['H'] = score['V'] = score['W'] = score['Y'] = 4;
+    score['K'] = 5;
+    score['J'] = score['X'] = 8;
+    score['Q'] = score['Z'] = 10;
+}
+
+main () {
+    int i;
+    char in[100];
+    FILE *fin = fopen ("scrab.in", "r");
+    FILE *fout = fopen ("scrab.out", "w");
+    FILE *fdict = fopen ("dict.txt", "r");
+
+    initscore ();
+    fscanf (fin, "%d", &amp;ntray);
+    for (i = 0; i &lt; ntray; i++) {
+        fscanf (fin, "%s", in);
+        if (in[0] == '#')
+            nblanks++;
+        else
+            gotlets[ in[0] ]++;
+    }
+
+    for (;;) {
+        char mygotlets[128];            /* one byte long counters! */
+        int nbad, myscore;
+        nbad = myscore = 0;
+        bzero (mygotlets, 128);
+        if (fgets (in, 99, fdict) == NULL) break;
+        for (i = 0; in[i] != '\n' &amp;&amp; in[i]; i++)
+            if (++mygotlets[ in[i] ] &gt; gotlets[ in[i] ])  {
+                nbad++;
+            } else {
+                myscore += score[ in[i] ];
+            }
+        if (nbad &lt;= nblanks &amp;&amp; myscore &gt; bestscore) {
+            for (i = 0; in[i] != '\n' &amp;&amp; in[i]; i++)
+                best[i] = in[i];
+            best[i] = '\0';
+            bestscore = myscore;
+        }
+    }
+    fprintf (stderr, "%s %d\n", best, bestscore);
+    fprintf (fout, "%s\n", best);
+    exit (0);
+}
+</PRE></BODY></HTML>

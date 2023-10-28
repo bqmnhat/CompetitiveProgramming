@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0059)http://ace.delos.com/ioiupload?d=gold&a=YYmxJSFCWG9&lang=ch -->
+<HTML><HEAD><TITLE>USACO Problems</TITLE>
+<META http-equiv=Pragma content=no-cache>
+<SCRIPT language=javascript>
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</SCRIPT>
+
+<META http-equiv=Content-Type content="text/html; charset=GB2312">
+<META content="MSHTML 6.00.2800.1615" name=GENERATOR></HEAD>
+<BODY background=goldch.files/bg9.jpg onload=""><FONT 
+face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><IMG src="goldch.files/cowhead2.gif"> </TD>
+    <TD vAlign=top>
+      <TABLE cellSpacing=0 cellPadding=0>
+        <TBODY>
+        <TR>
+          <TD>Contest: JAN09</TD></TR>
+        <TR>
+          <TD></TD></TR>
+        <TR>
+          <TD></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><FONT 
+color=red><B></B></FONT><BR><FONT size=6 <b>ANALYSIS MODE</B></FONT><BR>Submit 
+solutions for your own enjoyment. </FONT><PRE>**********************************************************************
+                           GOLD PROBLEMS
+**********************************************************************
+                            共三题, 1-3
+**********************************************************************
+
+
+第一题: 地震损坏[Hal Burch, 2004]
+
+农夫John的农场遭受了一场地震.有一些牛棚遭到了损坏,但幸运地,所有牛棚间的路经都还能使用.
+
+FJ的农场有P(1 &lt;= P &lt;= 30,000)个牛棚,编号1..P. C(1 &lt;= C &lt;= 100,000)条双向路经联
+接这些牛棚,编号为1..C. 路经i连接牛棚a_i和b_i (1 &lt;= a_i&lt;= P;1 &lt;= b_i &lt;= P).路经
+可能连接a_i到它自己,两个牛棚之间可能有多条路经.农庄在编号为1的牛棚.
+
+N (1 &lt;= N &lt;= P)头在不同牛棚的牛通过手机短信report_j(2 &lt;= report_j &lt;= P)告诉FJ它
+们的牛棚(report_j)没有损坏,但是它们无法通过路经和没有损坏的牛棚回到到农场.
+
+当FJ接到所有短信之后,找出最小的不可能回到农庄的牛棚数目.这个数目包括损坏的牛棚.
+
+注意:前50次提交将提供在一些测试数据上的运行结果.
+
+PROBLEM NAME: damage
+
+输入格式:
+
+* 第1行: 三个空格分开的数: P, C, 和 N
+
+* 第2..C+1行: 每行两个空格分开的数: a_i 和 b_i
+
+* 第C+2..C+N+1行: 每行一个数: report_j
+
+样例输入 (damage.in):
+
+4 3 1
+1 2
+2 3
+3 4
+3
+
+输出格式:
+
+* 第1行: 一个数,最少不能回到农庄的牛的数目(包括损坏的牛棚).
+
+样例输出 (damage.out):
+
+3
+
+输出解释:
+
+牛棚2遭到损坏,导致牛棚2, 3, 4里面的牛无法回到农庄.
+
+**********************************************************************
+
+第二题: 气象牛 [Jeffrey Wang, 2007]
+
+
+为了研究农场的气候,Betsy帮助农夫John做了N(1 &lt;= N &lt;= 100)次气压测量并按顺序记录
+了结果M_1...M_N(1 &lt;= M_i &lt;= 1,000,000).
+Betsy想找出一部分测量结果来总结整天的气压分布. 她想用K(1 &lt;= K &lt;= N)个数s_j
+(1 &lt;= s_1 &lt; s_2 &lt; ... &lt; s_K &lt;= N)来概括所有测量结果. 她想限制如下的误差:
+
+对于任何测量结果子集,每一个非此子集中的结果都会产生误差.总误差是所有测量结果的误差之
+和.更明确第说, 对于每一个和所有s_j都不同的i:
+
+* 如果 i 小于 s_1, 误差是:
+             2 * | M_i - M_(s_1) | 
+
+* 如果i在s_j和s_(j+1)之间,误差是:
+            | 2 * M_i - Sum(s_j, s_(j+1)) |  
+  注:Sum(x, y) = M_x + M_y; (M_x 和 M_y 之和)
+
+* 如果i大于s_K,误差为:
+             2 * | M_i - M_(s_K) |
+
+Besty给了最大允许的误差E (1 &lt;= E &lt;= 1,000,000),找出最小的一部分结果史得误
+差最多为E.
+
+PROBLEM NAME: baric
+
+输入格式:
+
+* 第一行: 两个空格分离的数: N 和 E
+
+* 第2..N+1行: 第i+1行包含一次测量记录:M_i
+
+样例输入(baric.in):
+
+4 20
+10
+3
+20
+40
+
+输入解释:
+
+Bessie做了4次记录,分别为10,3,20,和40.最大允许误差是20.
+
+输出格式:
+
+* 第一行: 两个空格分开的数: 最少能达到误差小于等于E的测量数目和使用那个测量
+数目能达到的最小误差.
+
+样例输出 (baric.out):
+
+2 17
+
+输出解释:
+
+选择第二和第四次测量结果能达到最小误差17. 第一次结果的误差是2*|10-3| = 14;
+第三次结果的误差是|2*20 - (3+40)|=3.
+
+**********************************************************************
+
+第三题: 安全路经 [龙凡, 2008]
+
+Gremlins最近在农场上泛滥,它们经常会阻止牛们从农庄(牛棚_1)走到别的牛棚(牛_i的目的
+地是牛棚_i).每一个gremlin只认识牛_i并且知道牛_i一般走到牛棚_i的最短路经.所以它
+们在牛_i到牛棚_i之前的最后一条牛路上等牛_i. 当然,牛不愿意遇到Gremlins,所以准备找
+一条稍微不同的路经从牛棚_1走到牛棚_i.所以,请你为每一头牛_i找出避免gremlin_i的最
+短路经的长度.
+
+和以往一样, 农场上的M (2 &lt;= M &lt;= 200,000)条双向牛路编号为1..M并且能让所有牛到
+达它们的目的地, N(3 &lt;= N &lt;= 100,000)个编号为1..N的牛棚.牛路i连接牛棚a_i
+(1 &lt;= a_i &lt;= N)和b_i (1 &lt;= b_i &lt;= N)并且需要时间t_i (1 &lt;=t_i &lt;= 1,000)通过.
+没有两条牛路连接同样的牛棚,所有牛路满足a_i!=b_i.在所有数据中,牛_i使用的牛棚_1到牛
+棚_i的最短路经是唯一的.
+
+以下是一个牛棚,牛路和时间的例子:
+
+      1--[2]--2-------+
+      |       |       |
+     [2]     [1]     [3]
+      |       |       |
+      +-------3--[4]--4
+
+   行程         最佳路经      最佳时间     最后牛路
+p_1 到 p_2       1-&gt;2          2         1-&gt;2
+p_1 到 p_3       1-&gt;3          2         1-&gt;3
+p_1 到 p_4      1-&gt;2-&gt;4        5         2-&gt;4
+
+当gremlins进入农场后:
+
+   行程         最佳路经      最佳时间      避免
+p_1 到 p_2     1-&gt;3-&gt;2         3         1-&gt;2
+p_1 到 p_3     1-&gt;2-&gt;3         3         1-&gt;3
+p_1 到 p_4     1-&gt;3-&gt;4         6         2-&gt;4
+
+20%的数据满足N&lt;=200.
+
+50%的数据满足N&lt;=3000.
+
+时间限制: 3秒
+
+内存限制: 64 MB
+
+PROBLEM NAME: travel
+
+输入格式:
+
+* 第一行: 两个空格分开的数, N和M
+
+* 第2..M+1行: 三个空格分开的数a_i, b_i,和t_i
+
+样例输入 (travel.in):
+
+4 5
+1 2 2
+1 3 2
+3 4 4
+3 2 1
+2 4 3
+
+输入解释:
+
+跟题中例子相同
+
+输出格式:
+
+* 第1..N-1行: 第i行包含一个数:从牛棚_1到牛棚_i+1并且避免从牛棚1到牛棚i+1最
+短路经上最后一条牛路的最少的时间.如果这样的路经不存在,输出-1.
+
+样例输出 (travel.out):
+
+3
+3
+6
+
+输出解释:
+
+跟题中例子相同
+
+**********************************************************************
+
+Translation by Richard Peng
+</PRE>
+<HR>
+
+<FORM action=/ioiupload method=post encType=multipart/form-data><INPUT 
+type=hidden value=YYmxJSFCWG9 name=a> 
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#000000 
+        border=0><TBODY>
+        <TR>
+          <TD height=1></TD></TR>
+        <TR>
+          <TD width=1>
+          <TD><FONT 
+            face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+            <TABLE cellPadding=5 width="100%" bgColor=#bfffbf>
+              <TBODY>
+              <TR>
+                <TD><B>Submit a program for grading:&nbsp;<B><INPUT type=file 
+                  name=filename> &nbsp;&nbsp; <INPUT type=submit value=Submit name=submit></B></B></TD></TR></TBODY></TABLE></FONT></TD>
+          <TD width=1></TD></TR>
+        <TR height=1>
+          <TD></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#000000 
+        border=0><TBODY>
+        <TR>
+          <TD height=1></TD></TR>
+        <TR>
+          <TD width=1>
+          <TD>
+            <TABLE cellPadding=5 width="100%" bgColor=#bfffbf>
+              <TBODY>
+              <TR>
+                <TD colSpan=2><FONT 
+                  face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"><B>To 
+                  run your program with your own test data, enter the 
+                  program<BR>file name and input file name then click 
+                  'Test':</B></FONT></TD></TR>
+              <TR>
+                <TD>
+                  <TABLE>
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <TABLE>
+                          <TBODY>
+                          <TR>
+                            <TD><FONT 
+                              face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"><B>Program&nbsp;File:&nbsp;</B></FONT></TD>
+                            <TD><INPUT type=file name=testprogramname></TD></TR>
+                          <TR>
+                            <TD align=right><FONT 
+                              face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"><B>Input&nbsp;File:&nbsp;</B></FONT></TD>
+                            <TD><INPUT type=file 
+                          name=testfilename></TD></TR></TBODY></TABLE></TD>
+                      <TD>&nbsp;&nbsp;</TD>
+                      <TD><INPUT type=submit value=Test name=submit></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+          <TD width=1></TD></TR>
+        <TR height=1>
+          <TD></TD></TR></TBODY></TABLE></TD></TD>
+  <TR>
+    <TD>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#000000 
+        border=0><TBODY>
+        <TR>
+          <TD height=1></TD></TR>
+        <TR>
+          <TD width=1>
+          <TD>
+            <TABLE cellPadding=5 width="100%" bgColor=#bfffbf>
+              <TBODY>
+              <TR>
+                <TD><FONT 
+                  face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"><B>Backup 
+                  a file:&nbsp;</B><INPUT type=file name=backupfilename> 
+                  &nbsp;&nbsp;&nbsp;<INPUT type=submit value=Backup name=submit> 
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <INPUT type=submit value="See Backups" name=submit> 
+              </FONT></TD></TR></TBODY></TABLE></TD>
+          <TD width=1></TD></TR>
+        <TR height=1>
+          <TD>
+          <TD></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD>
+      <HR>
+    </TD></TR></TBODY></TABLE><TR><TD><FONT 
+face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">The following 
+solution files are saved for grading:<BR>
+<TABLE cellSpacing=2>
+  <TBODY>
+  <TR>
+    <TH>Name</TH>
+    <TH>Size</TH>
+    <TH>When</TH>
+    <TH>Age</TH></TR>
+  <TR>
+    <TD><A 
+      href="http://ace.delos.com/ioiupload?a=YYmxJSFCWG9&amp;seesaved=mnoteb.c">mnoteb.c</A></TD>
+    <TD align=right>563</TD>
+    <TD align=right>5h58:01</TD>
+    <TD align=right>12h15:47</TD></TR></TBODY></TABLE></TD></TR>
+<HR>
+
+<CENTER><A href="http://ace.delos.com/ioiedit?a=YYmxJSFCWG9">Edit your database 
+record</A>&nbsp;|&nbsp; <A 
+href="http://ace.delos.com/ioiupload?a=YYmxJSFCWG9&amp;logout=1">Logout </A><!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->&nbsp;|&nbsp; 
+<A href="http://ace.delos.com/ioiupload?init=1&amp;a=YYmxJSFCWG9">Main contest 
+index</A> </CENTER><!--&nbsp;|&nbsp;-->
+<CENTER><A 
+href="http://ace.delos.com/ioiupload?a=YYmxJSFCWG9&amp;showsubmit">See submitted 
+solutions</A> &nbsp;|&nbsp; <A 
+href="http://ace.delos.com/ioiupload?a=YYmxJSFCWG9&amp;suggestionbox">Send 
+message to operations staff</A><BR>Director is not online<BR>This page was 
+generated at 1:13:48 GMT. </CENTER></FONT></FORM></BODY></HTML>

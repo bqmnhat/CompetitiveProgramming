@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1601119556 source:d:\bai tap star\28.08.2020\seqlen\main.cpp
+	<iostream>
+	<fstream>
+

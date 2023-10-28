@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1597406518 source:d:\bai tap star\08.08.2020\bai 8\main.cpp
+	<iostream>
+	<fstream>
+	<math.h>
+

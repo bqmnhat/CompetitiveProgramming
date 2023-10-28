@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1605362579 source:d:\bai tap star\24.10.2020\sqrseq\main.cpp
+	<iostream>
+	<cstdio>
+	<cmath>
+

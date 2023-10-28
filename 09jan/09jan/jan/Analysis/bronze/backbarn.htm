@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0048)http://ace.delos.com/TESTDATA/JAN09.backbarn.htm -->
+<HTML><HEAD><TITLE>USACO JAN09 backbarn Analysis</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<STYLE type=text/css>BODY {
+	FONT-FAMILY: Verdana,Tahoma,sans-serif,Arial,Lucida
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1615" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<CENTER><IMG height=118 src="backbarn.files/cow1.jpg" width=742></CENTER>
+<H2>USACO JAN09 Problem 'backbarn' Analysis</H2>
+<H4>by Rob Kolstad</H4>
+<P>This is an absolutely classic recursion program. While keeping track of 
+already-visited squares, one recursively calls the subroutine for counting the 
+number of ways to get to the endpoint with the various paths available from a 
+given point. 
+<P>This implementation passes the row,column of the current (already validated) 
+point to be visited along with the length so far (since we must only count the 
+number of ways that dont' exceed a certain length. 
+<P>A number of folks failed to check that the new row/column (after moving up, 
+down, right, or left) was still inside the boundaries. I don't know why this 
+happened. 
+<P>The implementation is recursive simplicity in itself. <PRE>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+int r, c, k;
+int dirr[4] = {0, 0, 1, -1};            /* directions to visit from a square */
+int dirc[4] = {1, -1, 0, 0};
+
+char forest[10][10];
+int nways = 0;
+
+count (ir, ic, len) {
+    int i, newr, newc, old;
+    if (len &gt; k) return;             /* too big?  quit. */
+    if (ir == r-1 &amp; ic == c-1) {    /* endpoint? count it! */
+        nways++;
+        return;                         /* nowhere else to go now */
+    }
+    old = forest[ir][ic];               /* because we must restore the forest
+later */
+    forest[ir][ic] = 'x';               /* drop a breadcrumb to mark our progress
+                                           and avoid visiting this space again */
+    for (i = 0; i &lt; 4; i++) {                /* four directions */
+        newr = ir + dirr[i];            /* new row to visit */
+        if (newr &lt; 0 || newr &gt;= r) continue;      /* validate */
+        newc = ic + dirc[i];            /* new column to visit */
+        if (newc &lt; 0 || newc &gt;= c) continue;      /* validate */
+        if (forest[newr][newc] != '.')  /* don't visit if already visited or
+occupied */
+            continue;
+        count (newr, newc, len+1);      /* visit new location */
+    }
+    forest[ir][ic] = old;               /* clean up breadcrumb */
+}
+
+main () {
+    FILE *fin = fopen ("backbarn.in", "r");
+    FILE *fout = fopen ("backbarn.out", "w");
+    int i, j;
+
+    fscanf (fin, "%d %d %d", &amp;r, &amp;c, &amp;k);
+    for (i = 0; i &lt; r; i++)
+        fscanf (fin, "%s", forest[i]);
+    count(0, 0, 1);                     /* start in lower left, length = 1*/
+    fprintf (fout, "%d\n", nways);
+    fprintf (stderr, "%d\n", nways);
+    exit (0);
+}
+</PRE></BODY></HTML>

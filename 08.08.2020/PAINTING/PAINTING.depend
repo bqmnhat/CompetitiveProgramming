@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1598012920 source:d:\bai tap star\08.08.2020\painting\main.cpp
+	<iostream>
+	<fstream>
+	<cmath>
+

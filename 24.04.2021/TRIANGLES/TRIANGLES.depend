@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1621338730 source:d:\mylab\btth\24.04.2021\triangles\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1616242278 source:d:\mylab\btth\22.11.2020\hamming\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

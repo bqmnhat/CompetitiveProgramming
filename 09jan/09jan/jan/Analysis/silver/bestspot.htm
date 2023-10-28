@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0048)http://ace.delos.com/TESTDATA/JAN09.bestspot.htm -->
+<HTML><HEAD><TITLE>USACO JAN09 bestspot Analysis</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<STYLE type=text/css>BODY {
+	FONT-FAMILY: Verdana,Tahoma,sans-serif,Arial,Lucida
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1615" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<CENTER><IMG height=118 src="bestspot.files/cow1.jpg" width=742></CENTER>
+<H2>USACO JAN09 Problem 'bestspot' Analysis</H2>
+<H4>by Fatih Gelgi</H4>
+<P>In the problem, minimizing average travel time can be also considered as the 
+minimum sum of shortest paths. The best pasture is the one that has the minimum 
+sum of shortest paths to the favorite pastures. In the example, 10 and 11 has 
+the minimum sum of shortest paths (36). The problem can be easily solved using 
+either all shortest path with Floyd-Warshall's method. Then, we choose the 
+pasture that has the minimum sum of shortest paths to the favorite pastures. 
+That is,</P><PRE>B = argmin_i { sum_j {mat(i,j)} }
+</PRE>
+<P>where mat is the all shortest path matrix, i is a pasture, j is a favorite 
+pasture.</P>
+<P>The solution requires O(N^2) memory since it only keeps adjacency matrix and 
+it requires O(N^3) time due to all shortest path algorithm.</P><PRE>/* All Shortest Path: O(N^3) */
+#include &lt;fstream&gt;
+
+using namespace std;
+
+#define MAX 500
+
+int p,mat[MAX][MAX],f,favorite[MAX],best;
+
+// read file
+void fRead()
+{
+	int c;
+	ifstream fl("bestspot.in");
+	fl &gt;&gt; p &gt;&gt; f &gt;&gt; c;
+	// read favourite pastures
+	for (int i=0; i&lt;f; favorite[i++]--)
+		fl &gt;&gt; favorite[i];
+	int a,b,d;
+	// read cowpaths
+	for (int i=0; i&lt;c; i++)
+	{
+		fl &gt;&gt; a &gt;&gt; b &gt;&gt; d;
+		mat[--a][--b]=d,mat[b][a]=d;
+	}
+	fl.close();
+}
+
+// write file
+void fWrite()
+{
+	ofstream fl("bestspot.out");
+	fl &lt;&lt; best &lt;&lt; "\n";
+	fl.close();
+}
+
+void solve()
+{
+	// Floyd-Warshall all shortest path
+	for (int i=0; i&lt;p; i++)
+		for (int j=0; j&lt;p; j++)
+			if (mat[j][i])
+				for (int k=0; k&lt;p; k++)
+					if (mat[i][k] &amp;&amp; (!mat[j][k] || mat[j][k]&gt;mat[j][i]+mat[i][k]))
+							mat[j][k]=mat[j][i]+mat[i][k];
+	for (int i=0; i&lt;p; i++) mat[i][i]=0;
+
+	// find best pasture
+	int bestsum=1000000000;
+	for (int i=0; i&lt;p; i++)
+	{
+		// calculate the total distance 
+		//	from the current pasture to favourite pastures
+		int sum=0;
+		for (int j=0; j&lt;f; sum+=mat[i][favorite[j++]]);
+		if (bestsum&gt;sum) bestsum=sum,best=i+1;	// update if it is a better pasture
+	}
+}
+
+int main(void)
+{
+	fRead();
+	solve();
+	fWrite();
+}
+</PRE></BODY></HTML>

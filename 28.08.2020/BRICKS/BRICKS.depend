@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1600519663 source:d:\bai tap star\28.08.2020\bricks\main.cpp
+	<iostream>
+	<cmath>
+	<fstream>
+	<iomanip>
+

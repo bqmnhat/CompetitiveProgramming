@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0046)http://ace.delos.com/TESTDATA/JAN09.mnoteb.htm -->
+<HTML><HEAD><TITLE>USACO JAN09 mnoteb Analysis</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<STYLE type=text/css>BODY {
+	FONT-FAMILY: Verdana,Tahoma,sans-serif,Arial,Lucida
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1615" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<CENTER><IMG height=118 src="mnoteb.files/cow1.jpg" width=742></CENTER>
+<H2>USACO JAN09 Problem 'mnoteb' Analysis</H2>
+<H4>by Rob Kolstad</H4>
+<P>This problem asks "which note is played at time t" where the times are 
+"bucketized" -- they are discrete integers in a half-open, half-closed interval 
+that lends itself perfectly to creating an array of which note is play at time 
+T_i. C and Java programmers can even subscript the array directly with T_i! 
+<P>How to create such an array? Probably the easiest way is to keep two counters 
+to insert note values into array. The sample solution below uses 'notesin' to 
+keep track of where the next note is to be stored and 'i' to keep track of which 
+note is to be stored there. We increase 'notesin' every time we store a note; we 
+increase 'i' every time we read a new note from the input. 
+<P>Then it's a simple case of simply printing the answer from the calculated 
+answer array. <PRE>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+int notes[10000];
+main () {
+    FILE *fin = fopen ("mnoteb.in", "r");
+    FILE *fout = fopen ("mnoteb.out", "w");
+    int i, j, n, q, b, notesin;
+
+    notesin = 0;
+    fscanf (fin, "%d %d", &amp;n, &amp;q);
+    for (i = 0; i &lt; n; i++) {
+        fscanf (fin, "%d", &amp;b);
+        for (j = 0; j &lt; b; j++)
+            notes[notesin++] = i+1;
+    }
+    for (i = 0; i &lt; q; i++) {
+        fscanf (fin, "%d", &amp;b);
+        fprintf (fout, "%d\n", notes[b]);
+    }
+    exit (0);
+}
+</PRE></BODY></HTML>

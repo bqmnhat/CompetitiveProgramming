@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1619705647 source:d:\mylab\btth\24.04.2021\cinema\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

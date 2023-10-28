@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1605957654 source:d:\bai tap star\24.10.2020\grid\main.cpp
+	<iostream>
+	<cstdio>
+	<string>
+

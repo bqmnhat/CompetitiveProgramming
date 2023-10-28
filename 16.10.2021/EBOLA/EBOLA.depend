@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1638277027 source:d:\mylab\btth\16.10.2021\ebola\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

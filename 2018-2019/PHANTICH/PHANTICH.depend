@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1620967594 source:d:\mylab\btth\2018-2019\phantich\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

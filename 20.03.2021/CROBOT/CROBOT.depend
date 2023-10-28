@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1618666268 source:d:\mylab\btth\20.03.2021\crobot\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+
