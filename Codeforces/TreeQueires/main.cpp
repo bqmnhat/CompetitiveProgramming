@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 #define MaxN 200000
 using namespace std;
-int n, m, k, v[MaxN+1], TIn[MaxN+1], TOut[MaxN+1], par[MaxN+1], depth[MaxN+1], T;
+int n, m, k, v[MaxN+1], tIn[MaxN+1], tOut[MaxN+1], par[MaxN+1], depth[MaxN+1], cnt;
 vector<int> graph[MaxN+1];
 bool vis[MaxN+1];
 
@@ -24,16 +24,17 @@ void DFS(int u, int p, int d) {
     vis[u] = true;
     par[u] = p;
     depth[u] = d;
-    T++;
-    TIn[u] = T;
+    cnt++;
+    tIn[u] = cnt;
     for (auto v: graph[u])
         if (!vis[v])
             DFS(v, u, d+1);
-    TOut[u] = T;
+    cnt++;
+    tOut[u] = cnt;
 }
 
 bool IsAncestor(int u, int v) {
-    return ((TIn[u] <= TIn[v]) && (TOut[u] >= TOut[v]));
+    return ((tIn[u] <= tIn[v]) && (tIn[v] <= tOut[u]));
 }
 
 void Solve() {
@@ -41,7 +42,7 @@ void Solve() {
     for (int i=1; i<=m; i++) {
         cin >> k;
         ReadData();
-        T = 0;
+        cnt = 0;
         int DeepestNode = v[1];
         for (int i=2; i<=k; i++)
             if (depth[DeepestNode] < depth[v[i]])

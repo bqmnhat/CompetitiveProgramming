@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1730714015 source:c:\nhatbui\backup_28.12.2021\mylab\competitiveprogarmming\codeforces\startup\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

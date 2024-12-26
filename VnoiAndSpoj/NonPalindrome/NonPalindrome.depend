@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1716191643 source:c:\nhatbui\backup_28.12.2021\mylab\competitiveprogarmming\vnoiandspoj\nonpalindrome\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

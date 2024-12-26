@@ -1,0 +1,33 @@
+Dãy con [ABINLIS]
+Cho hai dãy s? nguyên A=(a_1,a_2,…,a_m ),B=(b_1,b_2,…,b_n ) trong dó m?i ph?n t? c?a c? hai dãy d?u b?ng 0 hay 1. Hãy xác d?nh d? dài dãy con tang chung dài nh?t c?a A và B.
+D? li?u
+Dòng 1: s? nguyên m (1=m=2·?10?^5 )
+Dòng 2: m s? nguyên a_1,a_2,…,a_m  (0=a_i=1 ?i)
+Dòng 3: s? nguyên n (1=n=2·?10?^5 )
+Dòng 4: n s? nguyên b_1,b_2,…,b_n  (0=b_i=1 ?i)
+K?t qu?
+Dòng 1: s? nguyên là d? dài dãy con tang chung dài nh?t.
+Ví d?
+ABINLIS.INP	ABINLIS.OUT
+8
+0 0 0 1 0 1 1 0
+7
+0 0 1 1 0 1 0	5
+Gi?i thích ví d?: dãy con tang chung dài nh?t là dãy (0,0,1,1,1).
+
+
+
+
+
+NUMORDER
+Cho b?ng ?? kích thu?c ?? × ?? các hàng c?a b?ng du?c dánh s? t? 1 t?i ?? và các c?t c?a b?ng du?c dánh s? t? 1 t?i ??. Ô n?m trên hàng ?? và c?t ?? du?c di?n m?t s? nguyên có giá tr? b?ng i^2 + j^2 . 
+H?i n?u dem các s? trên b?ng x?p theo th? t? không gi?m (tang d?n) và dánh s? t? 1 t?i ?? × ?? thì s? th? ?? mang giá tr? bao nhiêu.
+INPUT: Ð?c t? t?p NUMORDER.INP
+G?m m?t dòng ch?a ba s? nguyên duong m,n,k ( k  =  m x n   =  10^9 )
+OUTPUT: Ghi vào t?p NUMORDER.OUT
+G?m dòng ch?a k?t qu? tìm du?c
+Ví d?: 
+NUMORDER.INP	NUMORDER.OUT
+3 5 10		18
+	
+

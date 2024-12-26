@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1719109155 source:c:\nhatbui\backup_28.12.2021\mylab\competitiveprogarmming\vnoiandspoj\haicaitui\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

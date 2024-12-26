@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1720229674 source:c:\nhatbui\backup_28.12.2021\mylab\competitiveprogarmming\thtqg\ngaythi\test\main.cpp
+	<bits/stdc++.h>
+	<ext/pb_ds/assoc_container.hpp>
+	<ext/pb_ds/tree_policy.hpp>
+
+1720235880 source:c:\nhatbui\backup_28.12.2021\mylab\competitiveprogarmming\thtqg\ngaythi\test\tht24kv_robot.cpp
+	<bits/stdc++.h>
+	<ext/pb_ds/assoc_container.hpp>
+	<ext/pb_ds/tree_policy.hpp>
+
+1720236294 source:c:\nhatbui\backup_28.12.2021\mylab\competitiveprogarmming\thtqg\ngaythi\test\tht24kv_restore.cpp
+	<bits/stdc++.h>
+	<ext/pb_ds/assoc_container.hpp>
+	<ext/pb_ds/tree_policy.hpp>
+
+1720237046 source:c:\nhatbui\backup_28.12.2021\mylab\competitiveprogarmming\thtqg\ngaythi\test\b4.cpp
+	<bits/stdc++.h>
+	<ext/pb_ds/assoc_container.hpp>
+	<ext/pb_ds/tree_policy.hpp>
+
+1720238475 source:c:\nhatbui\backup_28.12.2021\mylab\competitiveprogarmming\thtqg\ngaythi\test\b1.cpp
+	<bits/stdc++.h>
+	<ext/pb_ds/assoc_container.hpp>
+	<ext/pb_ds/tree_policy.hpp>
+

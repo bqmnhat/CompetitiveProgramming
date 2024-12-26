@@ -32,7 +32,6 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    //freopen("JPII.OUT", "w", stdout);
     cin >> n >> k;
     Solve();
     return 0;

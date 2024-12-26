@@ -13,6 +13,17 @@ void ReadData() {
         cin >> a[i];
 }
 
+void BuildSt(int v, int tl, int tr) {
+    if (tl == tr)
+        st[v] = a[tl];
+    else {
+        int tm = ((tl + tr) >> 1);
+        BuildSt(v*2, tl, tm);
+        BuildSt(v*2+1, tm+1, tr);
+        st[v] = st[v*2] + st[v*2+1];
+    }
+}
+
 void down(int v, ll tl, ll tr) {
     ll tm = ((tl + tr) >> 1LL);
     ll AddIn =  ((tm - tl + 1LL)*tl + (((tm - tl + 1LL)*(tm - tl + 2))/2))*lazy[v].second - lazy[v].first*(tm - tl + 1LL);
@@ -26,19 +37,10 @@ void down(int v, ll tl, ll tr) {
     lazy[v] = pii(0, 0);
 }
 
-void BuildSt(int v, int tl, int tr) {
-    if (tl == tr)
-        st[v] = a[tl];
-    else {
-        int tm = ((tl + tr) >> 1);
-        BuildSt(v*2, tl, tm);
-        BuildSt(v*2+1, tm+1, tr);
-        st[v] = st[v*2] + st[v*2+1];
-    }
-}
-
 void UpdateSt(int v, ll tl, ll tr, ll l, ll r, ll OriginL, ll OriginR) {
     if (l > r)
+        return;
+    if ((tl > r) || (tr < l))
         return;
     if ((l == tl) && (tr == r)) {
         ll AddIn =  ((r - l + 1LL)*l + (((r - l + 1LL)*(r - l + 2))/2)) - OriginL*(r - l + 1LL);
@@ -67,15 +69,13 @@ ll SumQuerry(int v, int tl, int tr, int l, int r) {
 void Solve() {
     BuildSt(1, 1, n);
     for (int i=1; i<=q; i++) {
-        int cmd;
+        int cmd, a, b;
         cin >> cmd;
         if (cmd == 1) {
-            int a, b;
             cin >> a >> b;
             UpdateSt(1, 1, n, a, b, a, b);
         }
         else {
-            int a, b;
             cin >> a >> b;
             cout << SumQuerry(1, 1, n, a, b) << '\n';
         }
@@ -87,8 +87,6 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    //freopen("POL.INP", "r", stdin);
-    //freopen("POL.OUT", "w", stdout);
     cin >> n >> q;
     ReadData();
     Solve();

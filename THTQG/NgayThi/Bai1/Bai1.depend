@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1720241322 source:c:\nhatbui\backup_28.12.2021\mylab\competitiveprogarmming\thtqg\ngaythi\bai1\main.cpp
+	<bits/stdc++.h>
+	<ext/pb_ds/assoc_container.hpp>
+	<ext/pb_ds/tree_policy.hpp>
+
